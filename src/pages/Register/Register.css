@@ -1,0 +1,59 @@
+/* Página de Registro. */
+.register-page {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #0b1220;
+  color: #f8fafc;
+}
+
+.register-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #111827;
+}
+
+.register-header {
+  margin-bottom: 24px;
+}
+
+.register-header h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+}
+
+.register-header p,
+.register-login {
+  color: #94a3b8;
+}
+
+.register-header p {
+  margin: 0;
+}
+
+.register-login a {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.register-divider {
+  margin: 28px 0 18px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.register-login {
+  margin: 20px 0 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .register-card {
+    padding: 32px;
+  }
+}

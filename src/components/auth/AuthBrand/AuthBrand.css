@@ -1,0 +1,25 @@
+/* Identidad visual de Atlaspay. */
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.auth-brand img {
+  width: 82px;
+  height: 82px;
+}
+
+.auth-brand > span {
+  color: #f8fafc;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.auth-brand strong {
+  color: #3b82f6;
+}
