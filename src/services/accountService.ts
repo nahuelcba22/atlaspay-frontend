@@ -1,6 +1,5 @@
+import { API_URL } from '../config/api';
 import { getToken } from './authStorage';
-
-const API_URL = 'http://localhost:3000/api';
 
 interface Account {
   cvu: string;
