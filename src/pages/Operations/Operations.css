@@ -1,0 +1,21 @@
+.operations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.operations__back {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.operations__title {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--color-text);
+}

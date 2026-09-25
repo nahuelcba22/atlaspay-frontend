@@ -1,0 +1,102 @@
+.exchange-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+}
+
+.exchange-form__title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.exchange-form__row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.exchange-form__row .exchange-form__field {
+  flex: 1;
+}
+
+.exchange-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exchange-form__label {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.exchange-form__input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+}
+
+.exchange-form__hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.exchange-form__swap {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-accent);
+  background-color: var(--color-surface-light);
+}
+
+.exchange-form__summary {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: var(--color-surface-light);
+}
+
+.exchange-form__summary p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.exchange-form__summary .exchange-form__result {
+  margin-top: 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.exchange-form__error {
+  margin: 0;
+  color: var(--color-error);
+}
+
+.exchange-form__success {
+  margin: 0;
+  color: var(--color-success);
+}
+
+.exchange-form__submit {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+.exchange-form__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
