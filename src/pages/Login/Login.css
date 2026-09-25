@@ -1,0 +1,47 @@
+/* Distribución general de la página de Login. */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #0b1220;
+  color: #f8fafc;
+}
+
+/* Contenedor principal del Login. */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #111827;
+}
+
+.login-header {
+  margin-bottom: 24px;
+}
+
+/* Textos secundarios y enlaces. */
+.login-header p,
+.login-register {
+  color: #94a3b8;
+}
+
+.login-brand,
+.login-register a {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.login-divider,
+.login-register {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Ajuste para pantallas medianas y grandes. */
+@media (min-width: 768px) {
+  .login-card {
+    padding: 32px;
+  }
+}

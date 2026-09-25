@@ -1,0 +1,78 @@
+/* Estilos compartidos por los formularios de autenticación. */
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Campos de Login y Registro. */
+.login-field,
+.register-form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #f8fafc;
+  font: inherit;
+}
+
+/* Control para mostrar u ocultar la contraseña. */
+.login-password {
+  position: relative;
+}
+
+.login-password-toggle,
+.register-form > button[type='button'] {
+  border: 0;
+  background: transparent;
+  color: #60a5fa;
+  cursor: pointer;
+}
+
+.login-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+/* Botones principales de autenticación. */
+.login-submit,
+.register-submit,
+.google-auth-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit,
+.register-submit {
+  border: 0;
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.google-auth-button {
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Mensajes de validación. */
+.login-error,
+.register-error {
+  margin: 0;
+  color: #f87171;
+}
