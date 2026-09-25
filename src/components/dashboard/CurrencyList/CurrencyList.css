@@ -1,0 +1,23 @@
+.currency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.currency-list__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.currency-list__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .currency-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
