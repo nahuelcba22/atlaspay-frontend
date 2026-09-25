@@ -1,0 +1,30 @@
+.recent-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recent-activity__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.recent-activity__empty {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  text-align: center;
+  background-color: var(--color-surface);
+}
+
+.recent-activity__empty p {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.recent-activity__empty span {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}

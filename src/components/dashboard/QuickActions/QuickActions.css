@@ -1,0 +1,32 @@
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quick-actions__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.quick-actions__buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.quick-actions__button {
+  padding: 12px 8px;
+  border: 1px solid var(--color-primary);
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+@media (min-width: 480px) {
+  .quick-actions__buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
