@@ -1,5 +1,6 @@
-import GoogleAuthButton from '../../components/auth/GoogleAuthButton';
-import RegisterForm from '../../components/auth/RegisterForm';
+import AuthBrand from '../../components/auth/AuthBrand/AuthBrand';
+import RegisterForm from '../../components/auth/Forms/RegisterForm';
+import GoogleAuthButton from '../../components/auth/GoogleAuthButton/GoogleAuthButton';
 import './Register.css';
 
 function Register() {
@@ -7,7 +8,8 @@ function Register() {
     <main className="register-page">
       <section className="register-card">
         <header className="register-header">
-          <span className="register-brand">Atlaspay</span>
+          <AuthBrand />
+
           <h1>Crear cuenta</h1>
           <p>Creá tu cuenta para comenzar a gestionar tu billetera.</p>
         </header>

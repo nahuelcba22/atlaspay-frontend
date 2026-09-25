@@ -1,5 +1,6 @@
-import GoogleAuthButton from '../../components/auth/GoogleAuthButton';
-import LoginForm from '../../components/auth/LoginForm';
+import AuthBrand from '../../components/auth/AuthBrand/AuthBrand';
+import LoginForm from '../../components/auth/Forms/LoginForm';
+import GoogleAuthButton from '../../components/auth/GoogleAuthButton/GoogleAuthButton';
 import './Login.css';
 
 function Login() {
@@ -7,7 +8,8 @@ function Login() {
     <main className="login-page">
       <section className="login-card">
         <header className="login-header">
-          <span className="login-brand">Atlaspay</span>
+          <AuthBrand />
+
           <h1>Iniciar sesión</h1>
           <p>Ingresá a tu cuenta para administrar tu billetera.</p>
         </header>

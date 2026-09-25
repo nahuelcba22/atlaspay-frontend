@@ -1,15 +1,16 @@
-/* Distribución general de la página de Login. */
+/* Página de Login. */
 .login-page {
-  min-height: 100vh;
+  box-sizing: border-box;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 16px;
   background: #0b1220;
   color: #f8fafc;
 }
 
-/* Contenedor principal del Login. */
 .login-card {
+  box-sizing: border-box;
   width: 100%;
   max-width: 420px;
   padding: 24px;
@@ -21,25 +22,36 @@
   margin-bottom: 24px;
 }
 
-/* Textos secundarios y enlaces. */
+.login-header h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+}
+
 .login-header p,
 .login-register {
   color: #94a3b8;
 }
 
-.login-brand,
+.login-header p {
+  margin: 0;
+}
+
 .login-register a {
   color: #3b82f6;
   font-weight: 700;
 }
 
-.login-divider,
-.login-register {
-  margin-top: 20px;
+.login-divider {
+  margin: 28px 0 18px;
+  color: #94a3b8;
   text-align: center;
 }
 
-/* Ajuste para pantallas medianas y grandes. */
+.login-register {
+  margin: 20px 0 0;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .login-card {
     padding: 32px;
