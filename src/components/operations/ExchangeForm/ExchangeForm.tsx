@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { CURRENCIES, convert, getRate, hasEnoughBalance } from '../../../utils/exchange';
 import type { Currency } from '../../../utils/exchange';
+import { getExchangeRates } from '../../../services/exchangeService';
 import './ExchangeForm.css';
 
 // Saldos de prueba. Se reemplazarán por los saldos reales del backend.
@@ -22,14 +23,33 @@ function ExchangeForm() {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState('');
 
+  const [rates, setRates] = useState<Record<Currency, number> | null>(null);
+  const [lastUpdated, setLastUpdated] = useState('');
+  const [ratesError, setRatesError] = useState('');
+
+  // Al abrir el formulario, pide las tasas reales al backend.
+  useEffect(() => {
+    const loadRates = async () => {
+      try {
+        const data = await getExchangeRates();
+        setRates(data.rates);
+        setLastUpdated(data.last_updated);
+      } catch {
+        setRatesError('No se pudieron cargar las tasas de cambio. Intenta de nuevo más tarde.');
+      }
+    };
+
+    loadRates();
+  }, []);
+
   const numericAmount = Number(amount);
   const balance = MOCK_BALANCES[from];
-  const rate = getRate(from, to);
-  const result = convert(numericAmount, from, to);
+  const rate = rates ? getRate(from, to, rates) : 0;
+  const result = rates ? convert(numericAmount, from, to, rates) : 0;
 
   const isSameCurrency = from === to;
   const isOverBalance = numericAmount > balance;
-  const canOperate = !isSameCurrency && hasEnoughBalance(numericAmount, balance);
+  const canOperate = rates !== null && !isSameCurrency && hasEnoughBalance(numericAmount, balance);
 
   function handleSwap() {
     setFrom(to);
@@ -116,12 +136,25 @@ function ExchangeForm() {
       </label>
 
       <div className="exchange-form__summary">
-        <p>
-          Tasa: 1 {from} = {rate.toLocaleString('es-AR', { maximumFractionDigits: 4 })} {to}
-        </p>
-        <p className="exchange-form__result">
-          Recibís: {formatMoney(numericAmount > 0 ? result : 0, to)}
-        </p>
+        {!rates && !ratesError && <p>Cargando tasas...</p>}
+        {ratesError && <p className="exchange-form__error">{ratesError}</p>}
+        {rates && (
+          <>
+            <p>
+              Tasa: 1 {from} = {rate.toLocaleString('es-AR', { maximumFractionDigits: 4 })} {to}
+            </p>
+            <p className="exchange-form__result">
+              Recibís: {formatMoney(numericAmount > 0 ? result : 0, to)}
+            </p>
+            <p className="exchange-form__updated">
+              Actualizado:{' '}
+              {new Date(lastUpdated).toLocaleString('es-AR', {
+                dateStyle: 'short',
+                timeStyle: 'short',
+              })}
+            </p>
+          </>
+        )}
       </div>
 
       {isSameCurrency && <p className="exchange-form__error">Las monedas deben ser distintas.</p>}
