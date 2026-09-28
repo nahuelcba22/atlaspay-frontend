@@ -1,0 +1,99 @@
+/* Tipografía y piezas compartidas por toda la landing. */
+.landing {
+  --landing-serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.landing__wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.landing-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.landing-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.landing-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.landing-btn--primary {
+  color: #fff;
+  background-color: var(--color-primary);
+}
+
+.landing-btn--primary:hover {
+  background-color: #2f6fe0;
+}
+
+.landing-btn--line {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.landing-btn--line:hover {
+  border-color: var(--color-text-muted);
+}
+
+.landing-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.landing-section {
+  padding-top: 110px;
+}
+
+.landing-section__head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 56px;
+}
+
+.landing-section__title {
+  margin: 0;
+  max-width: 700px;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+}
+
+/* La parte en cursiva de los títulos. */
+.landing-serif {
+  font-family: var(--landing-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .landing__wrap {
+    padding: 0 40px;
+  }
+}

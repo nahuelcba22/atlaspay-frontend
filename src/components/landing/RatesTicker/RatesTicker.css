@@ -1,0 +1,52 @@
+.rates-ticker {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.rates-ticker__tag {
+  flex: none;
+  padding: 16px 20px;
+  border-right: 1px solid var(--color-border);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.rates-ticker__viewport {
+  overflow: hidden;
+}
+
+.rates-ticker__track {
+  display: flex;
+  gap: 48px;
+  padding-left: 48px;
+  width: max-content;
+  white-space: nowrap;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  animation: rates-ticker 40s linear infinite;
+}
+
+.rates-ticker__item b {
+  margin-right: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+@keyframes rates-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rates-ticker__track {
+    animation: none;
+  }
+}
