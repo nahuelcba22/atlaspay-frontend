@@ -14,8 +14,14 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* Temporalmente pública para probar sin backend. Luego va dentro de ProtectedRoute. */}
-        <Route path="/operaciones" element={<Operations />} />
+        <Route
+          path="/operaciones"
+          element={
+            <ProtectedRoute>
+              <Operations />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={
