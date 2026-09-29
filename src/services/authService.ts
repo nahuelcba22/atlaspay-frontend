@@ -1,4 +1,5 @@
 import { API_URL } from '../config/api';
+import { handleApiResponse } from './apiResponse';
 
 interface RegisterData {
   nombre: string;
@@ -23,17 +24,6 @@ interface LoginResponse {
   usuario: AuthUser;
 }
 
-// Procesa la respuesta del backend y devuelve un error legible.
-async function handleResponse<T>(response: Response): Promise<T> {
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.error || 'Ocurrió un error inesperado.');
-  }
-
-  return data;
-}
-
 // Registra un usuario nuevo en Atlaspay.
 export async function registerUser(data: RegisterData) {
   const response = await fetch(`${API_URL}/usuarios`, {
@@ -44,12 +34,12 @@ export async function registerUser(data: RegisterData) {
     body: JSON.stringify(data),
   });
 
-  return handleResponse(response);
+  return handleApiResponse(response);
 }
 
 // Inicia sesión y devuelve el token junto con el usuario.
 export async function loginUser(data: LoginData): Promise<LoginResponse> {
-  const response = await fetch(`${API_URL}/login`, {
+  const response = await fetch(`${API_URL}/usuarios/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -57,5 +47,5 @@ export async function loginUser(data: LoginData): Promise<LoginResponse> {
     body: JSON.stringify(data),
   });
 
-  return handleResponse<LoginResponse>(response);
+  return handleApiResponse<LoginResponse>(response);
 }

@@ -1,5 +1,6 @@
 import { API_URL } from '../config/api';
 import type { Currency } from '../utils/exchange';
+import { handleApiResponse } from './apiResponse';
 
 export interface ExchangeRatesResponse {
   success: boolean;
@@ -12,10 +13,10 @@ export interface ExchangeRatesResponse {
 // Pide al backend las tasas de cambio actuales (base USD).
 export async function getExchangeRates(): Promise<ExchangeRatesResponse> {
   const response = await fetch(`${API_URL}/exchange/rates`);
-  const data = await response.json();
+  const data = await handleApiResponse<ExchangeRatesResponse>(response);
 
-  if (!response.ok || !data.success) {
-    throw new Error(data.message || 'No se pudieron obtener las tasas de cambio.');
+  if (!data.success) {
+    throw new Error('No se pudieron obtener las tasas de cambio.');
   }
 
   return data;

@@ -1,5 +1,6 @@
 import { API_URL } from '../config/api';
 import { getToken } from './authStorage';
+import { handleApiResponse } from './apiResponse';
 
 interface Account {
   cvu: string;
@@ -21,17 +22,11 @@ export async function getMyAccount(): Promise<AccountResponse> {
     throw new Error('No hay una sesión activa.');
   }
 
-  const response = await fetch(`${API_URL}/mi-cuenta`, {
+  const response = await fetch(`${API_URL}/cuentas/mi-cuenta`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.error || 'No se pudo obtener la cuenta.');
-  }
-
-  return data;
+  return handleApiResponse<AccountResponse>(response);
 }
