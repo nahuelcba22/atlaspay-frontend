@@ -1,4 +1,12 @@
-/* Acceso con Google. */
+/* Contenedor del acceso con Google. */
+.google-auth-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+/* Botón personalizado de acceso con Google. */
 .google-auth-button {
   display: flex;
   align-items: center;
@@ -16,7 +24,20 @@
   cursor: pointer;
 }
 
+.google-auth-button:hover {
+  background: #172033;
+}
+
 .google-auth-button :is(img, svg) {
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
+}
+
+/* Error de autenticación con Google. */
+.google-auth-error {
+  margin: 0;
+  color: #f87171;
+  font-size: 0.875rem;
+  text-align: center;
 }
