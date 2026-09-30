@@ -37,7 +37,7 @@ export async function registerUser(data: RegisterData) {
   return handleApiResponse(response);
 }
 
-// Inicia sesión y devuelve el token junto con el usuario.
+// Inicia sesión con email y contraseña.
 export async function loginUser(data: LoginData): Promise<LoginResponse> {
   const response = await fetch(`${API_URL}/usuarios/login`, {
     method: 'POST',
@@ -45,6 +45,21 @@ export async function loginUser(data: LoginData): Promise<LoginResponse> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
+  });
+
+  return handleApiResponse<LoginResponse>(response);
+}
+
+// Inicia sesión con el access token obtenido desde Google.
+export async function loginWithGoogle(
+  accessToken: string,
+): Promise<LoginResponse> {
+  const response = await fetch(`${API_URL}/usuarios/google`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ accessToken }),
   });
 
   return handleApiResponse<LoginResponse>(response);
