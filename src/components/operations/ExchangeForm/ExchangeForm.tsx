@@ -3,21 +3,18 @@ import type { FormEvent } from 'react';
 import { CURRENCIES, convert, getRate, hasEnoughBalance } from '../../../utils/exchange';
 import type { Currency } from '../../../utils/exchange';
 import { getExchangeRates } from '../../../services/exchangeService';
+import type { AccountBalances } from '../../../services/accountService';
 import './ExchangeForm.css';
-
-// Saldos de prueba. Se reemplazarán por los saldos reales del backend.
-const MOCK_BALANCES: Record<Currency, number> = {
-  ARS: 85000,
-  USD: 250,
-  EUR: 120,
-  PEN: 300,
-};
 
 function formatMoney(value: number, currency: Currency): string {
   return value.toLocaleString('es-AR', { style: 'currency', currency });
 }
 
-function ExchangeForm() {
+interface ExchangeFormProps {
+  balances: AccountBalances;
+}
+
+function ExchangeForm({ balances }: ExchangeFormProps) {
   const [from, setFrom] = useState<Currency>('USD');
   const [to, setTo] = useState<Currency>('PEN');
   const [amount, setAmount] = useState('');
@@ -43,7 +40,7 @@ function ExchangeForm() {
   }, []);
 
   const numericAmount = Number(amount);
-  const balance = MOCK_BALANCES[from];
+  const balance = balances[from];
   const rate = rates ? getRate(from, to, rates) : 0;
   const result = rates ? convert(numericAmount, from, to, rates) : 0;
 
