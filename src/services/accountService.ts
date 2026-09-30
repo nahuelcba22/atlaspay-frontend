@@ -2,11 +2,18 @@ import { API_URL } from '../config/api';
 import { getToken } from './authStorage';
 import { handleApiResponse } from './apiResponse';
 
+export interface AccountBalances {
+  ARS: number;
+  USD: number;
+  EUR: number;
+  PEN: number;
+}
+
 interface Account {
   cvu: string;
   alias: string;
-  saldo: number;
   estado: string;
+  saldos: AccountBalances;
 }
 
 interface AccountResponse {

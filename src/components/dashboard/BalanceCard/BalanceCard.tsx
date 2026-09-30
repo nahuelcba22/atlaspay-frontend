@@ -1,20 +1,22 @@
 import './BalanceCard.css';
 
-const mockTotalBalance = 125000;
+interface BalanceCardProps {
+  balance: number;
+}
 
-function BalanceCard() {
+function BalanceCard({ balance }: BalanceCardProps) {
   return (
     <section className="balance-card">
       <p className="balance-card__label">Balance total</p>
 
       <h2 className="balance-card__amount">
-        {mockTotalBalance.toLocaleString('es-AR', {
+        {balance.toLocaleString('es-AR', {
           style: 'currency',
           currency: 'ARS',
         })}
       </h2>
 
-      <span className="balance-card__reference">Equivalente en ARS</span>
+      <span className="balance-card__reference">Saldo disponible en ARS</span>
     </section>
   );
 }

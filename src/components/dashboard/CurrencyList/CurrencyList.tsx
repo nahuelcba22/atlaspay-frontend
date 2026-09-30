@@ -1,21 +1,28 @@
+import type { AccountBalances } from '../../../services/accountService';
 import CurrencyCard from '../CurrencyCard/CurrencyCard';
 import './CurrencyList.css';
 
-const mockCurrencies = [
-  { currency: 'ARS', balance: 85000 },
-  { currency: 'USD', balance: 250 },
-  { currency: 'EUR', balance: 120 },
-  { currency: 'PEN', balance: 300 },
-] as const;
+interface CurrencyListProps {
+  balances: AccountBalances;
+}
 
-function CurrencyList() {
+function CurrencyList({ balances }: CurrencyListProps) {
+  const currencies = Object.entries(balances) as [
+    keyof AccountBalances,
+    number,
+  ][];
+
   return (
     <section className="currency-list">
       <h2 className="currency-list__title">Mis monedas</h2>
 
       <div className="currency-list__grid">
-        {mockCurrencies.map(({ currency, balance }) => (
-          <CurrencyCard key={currency} currency={currency} balance={balance} />
+        {currencies.map(([currency, balance]) => (
+          <CurrencyCard
+            key={currency}
+            currency={currency}
+            balance={balance}
+          />
         ))}
       </div>
     </section>
