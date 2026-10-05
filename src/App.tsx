@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute/ProtectedRoute';
+import ChatAssistant from './components/chat/ChatAssistant/ChatAssistant';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
@@ -41,6 +42,7 @@ function App() {
           }
         />
       </Routes>
+      <ChatAssistant />
     </BrowserRouter>
   );
 }
