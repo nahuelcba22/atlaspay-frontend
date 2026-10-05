@@ -5,6 +5,7 @@ import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Operations from './pages/Operations/Operations';
 import Register from './pages/Register/Register';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -27,6 +28,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/perfil"
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           }
         />
