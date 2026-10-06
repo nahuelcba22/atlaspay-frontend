@@ -2,23 +2,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 0;
+  gap: var(--space-3);
+  padding: var(--space-5) 0;
 }
 
 .landing-header__brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-2);
+  flex-shrink: 0;
   text-decoration: none;
 }
 
 .landing-header__brand img {
-  width: 30px;
-  height: 30px;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .landing-header__brand span {
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-text);
@@ -28,21 +30,25 @@
   color: var(--color-primary);
 }
 
-.landing-header__links,
-.landing-header__login {
+/* Los enlaces de secciones solo caben en pantallas medianas en adelante. */
+.landing-header__links {
   display: none;
+  gap: var(--space-6);
 }
 
-.landing-header__links {
-  gap: 32px;
+.landing-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
 }
 
 .landing-header__links a,
 .landing-header__login {
-  font-size: 0.92rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition);
 }
 
 .landing-header__links a:hover,
@@ -50,15 +56,22 @@
   color: var(--color-text);
 }
 
-.landing-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 22px;
+/* En pantallas chicas el botón se achica, pero "Ingresar" siempre se ve. */
+.landing-header__actions .landing-btn {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  white-space: nowrap;
 }
 
-@media (min-width: 820px) {
-  .landing-header__links,
-  .landing-header__login {
+@media (min-width: 48rem) {
+  .landing-header__actions .landing-btn {
+    padding: 0.8rem 1.4rem;
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: 52rem) {
+  .landing-header__links {
     display: flex;
   }
 }
