@@ -32,6 +32,14 @@ function QuickActions() {
         >
           Cambiar
         </button>
+
+        <button
+          className="quick-actions__button"
+          type="button"
+          onClick={() => navigate('/transferencias')}
+        >
+          Transferir
+        </button>
       </div>
     </section>
   );

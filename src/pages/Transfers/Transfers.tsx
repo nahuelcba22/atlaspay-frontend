@@ -1,28 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ExchangeForm from '../../components/operations/ExchangeForm/ExchangeForm';
+import TransferForm from '../../components/operations/TransferForm/TransferForm';
 import {
   getMyAccount,
   type AccountBalances,
 } from '../../services/accountService';
-import './Operations.css';
+import './Transfers.css';
 
-function Operations() {
-  const [balances, setBalances] =
-    useState<AccountBalances | null>(null);
+function Transfers() {
+  const [balances, setBalances] = useState<AccountBalances | null>(null);
   const [hasError, setHasError] = useState(false);
 
   async function refreshBalances() {
     try {
       const response = await getMyAccount();
-
       setBalances(response.cuenta.saldos);
       setHasError(false);
     } catch (error) {
-      console.error(
-        'No se pudieron actualizar los saldos:',
-        error,
-      );
+      console.error('No se pudieron actualizar los saldos:', error);
       setHasError(true);
     }
   }
@@ -33,16 +28,11 @@ function Operations() {
     getMyAccount()
       .then((response) => {
         if (!active) return;
-
         setBalances(response.cuenta.saldos);
       })
       .catch((error) => {
         if (!active) return;
-
-        console.error(
-          'No se pudieron cargar los saldos:',
-          error,
-        );
+        console.error('No se pudieron cargar los saldos:', error);
         setHasError(true);
       });
 
@@ -52,28 +42,18 @@ function Operations() {
   }, []);
 
   return (
-    <main className="operations">
-      <Link
-        className="operations__back"
-        to="/dashboard"
-      >
+    <main className="transfers">
+      <Link className="transfers__back" to="/dashboard">
         ← Volver al dashboard
       </Link>
 
-      <h1 className="operations__title">
-        Operaciones
-      </h1>
+      <h1 className="transfers__title">Transferencias</h1>
 
-      {!balances && !hasError && (
-        <p>Cargando saldos...</p>
-      )}
-
-      {hasError && (
-        <p>No se pudieron cargar tus saldos.</p>
-      )}
+      {!balances && !hasError && <p>Cargando saldos...</p>}
+      {hasError && <p>No se pudieron cargar tus saldos.</p>}
 
       {balances && (
-        <ExchangeForm
+        <TransferForm
           balances={balances}
           onSuccess={refreshBalances}
         />
@@ -82,4 +62,4 @@ function Operations() {
   );
 }
 
-export default Operations;
+export default Transfers;

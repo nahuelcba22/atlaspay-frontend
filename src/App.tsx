@@ -5,6 +5,7 @@ import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Operations from './pages/Operations/Operations';
 import Register from './pages/Register/Register';
+import Transfers from './pages/Transfers/Transfers';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route
           path="/operaciones"
           element={
@@ -22,6 +24,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/transferencias"
+          element={
+            <ProtectedRoute>
+              <Transfers />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/dashboard"
           element={
