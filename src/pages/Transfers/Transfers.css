@@ -1,4 +1,4 @@
-.operations {
+.transfers {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -9,12 +9,12 @@
   padding: 32px 20px;
 }
 
-.operations__back {
+.transfers__back {
   color: var(--color-accent);
   text-decoration: none;
 }
 
-.operations__title {
+.transfers__title {
   margin: 0;
   font-size: 1.75rem;
   color: var(--color-text);

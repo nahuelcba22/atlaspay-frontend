@@ -1,0 +1,66 @@
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+}
+
+.transfer-form__title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.transfer-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transfer-form__label,
+.transfer-form__hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.transfer-form__hint {
+  font-size: 0.8rem;
+}
+
+.transfer-form__input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+}
+
+.transfer-form__error {
+  margin: 0;
+  color: var(--color-error);
+}
+
+.transfer-form__success {
+  margin: 0;
+  color: var(--color-success);
+}
+
+.transfer-form__submit {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+.transfer-form__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

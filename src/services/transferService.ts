@@ -7,6 +7,7 @@ export interface Transfer {
   cuenta_origen_id: string;
   cuenta_destino_id: string;
   monto: string;
+  moneda: string;
   motivo: string;
   fecha: string;
 }
@@ -16,6 +17,19 @@ interface TransferHistoryResponse {
   transferencias: Transfer[];
 }
 
+interface CreateTransferData {
+  cvu_destino: string;
+  monto: number;
+  motivo: string;
+  moneda: string;
+}
+
+interface CreateTransferResponse {
+  message: string;
+  comprobante: Transfer;
+}
+
+// Obtiene el historial de transferencias del usuario.
 export async function getTransferHistory(): Promise<TransferHistoryResponse> {
   const token = getToken();
 
@@ -30,4 +44,26 @@ export async function getTransferHistory(): Promise<TransferHistoryResponse> {
   });
 
   return handleApiResponse<TransferHistoryResponse>(response);
+}
+
+// Envía una nueva transferencia al backend.
+export async function createTransfer(
+  data: CreateTransferData,
+): Promise<CreateTransferResponse> {
+  const token = getToken();
+
+  if (!token) {
+    throw new Error('No hay una sesión activa.');
+  }
+
+  const response = await fetch(`${API_URL}/transferencias`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  return handleApiResponse<CreateTransferResponse>(response);
 }
