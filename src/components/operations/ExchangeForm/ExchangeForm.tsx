@@ -1,169 +1,67 @@
-import { useEffect, useState } from 'react';
-import type { FormEvent } from 'react';
-import { CURRENCIES, convert, getRate, hasEnoughBalance } from '../../../utils/exchange';
-import type { Currency } from '../../../utils/exchange';
-import { getExchangeRates } from '../../../services/exchangeService';
 import type { AccountBalances } from '../../../services/accountService';
+import type { Currency } from '../../../utils/exchange';
+import ExchangeFields from './ExchangeForm.fields';
+import ExchangeSummary from './ExchangeForm.summary';
+import { useExchangeForm } from './useExchangeForm';
 import './ExchangeForm.css';
-
-function formatMoney(value: number, currency: Currency): string {
-  return value.toLocaleString('es-AR', { style: 'currency', currency });
-}
 
 interface ExchangeFormProps {
   balances: AccountBalances;
+  onSuccess: () => void;
 }
 
-function ExchangeForm({ balances }: ExchangeFormProps) {
-  const [from, setFrom] = useState<Currency>('USD');
-  const [to, setTo] = useState<Currency>('PEN');
-  const [amount, setAmount] = useState('');
-  const [message, setMessage] = useState('');
+function formatMoney(value: number, currency: Currency) {
+  return value.toLocaleString('es-AR', {
+    style: 'currency',
+    currency,
+  });
+}
 
-  const [rates, setRates] = useState<Record<Currency, number> | null>(null);
-  const [lastUpdated, setLastUpdated] = useState('');
-  const [ratesError, setRatesError] = useState('');
-
-  // Al abrir el formulario, pide las tasas reales al backend.
-  useEffect(() => {
-    const loadRates = async () => {
-      try {
-        const data = await getExchangeRates();
-        setRates(data.rates);
-        setLastUpdated(data.last_updated);
-      } catch {
-        setRatesError('No se pudieron cargar las tasas de cambio. Intenta de nuevo más tarde.');
-      }
-    };
-
-    loadRates();
-  }, []);
-
-  const numericAmount = Number(amount);
-  const balance = balances[from];
-  const rate = rates ? getRate(from, to, rates) : 0;
-  const result = rates ? convert(numericAmount, from, to, rates) : 0;
-
-  const isSameCurrency = from === to;
-  const isOverBalance = numericAmount > balance;
-  const canOperate = rates !== null && !isSameCurrency && hasEnoughBalance(numericAmount, balance);
-
-  function handleSwap() {
-    setFrom(to);
-    setTo(from);
-    setMessage('');
-  }
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!canOperate) return;
-
-    setMessage(
-      `Operación simulada: ${formatMoney(numericAmount, from)} → ${formatMoney(result, to)}`,
-    );
-    setAmount('');
-  }
+function ExchangeForm({ balances, onSuccess }: ExchangeFormProps) {
+  const form = useExchangeForm({ balances, onSuccess });
 
   return (
-    <form className="exchange-form" onSubmit={handleSubmit}>
+    <form className="exchange-form" onSubmit={form.handleSubmit}>
       <h2 className="exchange-form__title">Convertir monedas</h2>
 
-      <div className="exchange-form__row">
-        <label className="exchange-form__field">
-          <span className="exchange-form__label">Desde</span>
-          <select
-            className="exchange-form__input"
-            value={from}
-            onChange={(event) => {
-              setFrom(event.target.value as Currency);
-              setMessage('');
-            }}
-          >
-            {CURRENCIES.map((currency) => (
-              <option key={currency} value={currency}>
-                {currency}
-              </option>
-            ))}
-          </select>
-        </label>
+      <ExchangeFields
+        from={form.from}
+        to={form.to}
+        amount={form.amount}
+        balanceLabel={formatMoney(form.balance, form.from)}
+        onFromChange={(event) => {
+          form.setFrom(event.target.value as Currency);
+          form.clearMessages();
+        }}
+        onToChange={(event) => {
+          form.setTo(event.target.value as Currency);
+          form.clearMessages();
+        }}
+        onAmountChange={(event) => {
+          form.setAmount(event.target.value);
+          form.clearMessages();
+        }}
+        onSwap={form.handleSwap}
+      />
 
-        <button
-          className="exchange-form__swap"
-          type="button"
-          onClick={handleSwap}
-          aria-label="Invertir monedas"
-        >
-          ⇄
-        </button>
-
-        <label className="exchange-form__field">
-          <span className="exchange-form__label">Hacia</span>
-          <select
-            className="exchange-form__input"
-            value={to}
-            onChange={(event) => {
-              setTo(event.target.value as Currency);
-              setMessage('');
-            }}
-          >
-            {CURRENCIES.map((currency) => (
-              <option key={currency} value={currency}>
-                {currency}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <label className="exchange-form__field">
-        <span className="exchange-form__label">Monto</span>
-        <input
-          className="exchange-form__input"
-          type="number"
-          min="0"
-          step="any"
-          placeholder="0,00"
-          value={amount}
-          onChange={(event) => {
-            setAmount(event.target.value);
-            setMessage('');
-          }}
-        />
-        <span className="exchange-form__hint">Disponible: {formatMoney(balance, from)}</span>
-      </label>
-
-      <div className="exchange-form__summary">
-        {!rates && !ratesError && <p>Cargando tasas...</p>}
-        {ratesError && <p className="exchange-form__error">{ratesError}</p>}
-        {rates && (
-          <>
-            <p>
-              Tasa: 1 {from} = {rate.toLocaleString('es-AR', { maximumFractionDigits: 4 })} {to}
-            </p>
-            <p className="exchange-form__result">
-              Recibís: {formatMoney(numericAmount > 0 ? result : 0, to)}
-            </p>
-            <p className="exchange-form__updated">
-              Actualizado:{' '}
-              {new Date(lastUpdated).toLocaleString('es-AR', {
-                dateStyle: 'short',
-                timeStyle: 'short',
-              })}
-            </p>
-          </>
+      <ExchangeSummary
+        hasRates={form.rates !== null}
+        ratesError={form.ratesError}
+        from={form.from}
+        to={form.to}
+        rate={form.rate}
+        resultLabel={formatMoney(
+          form.numericAmount > 0 ? form.result : 0,
+          form.to,
         )}
-      </div>
-
-      {isSameCurrency && <p className="exchange-form__error">Las monedas deben ser distintas.</p>}
-      {!isSameCurrency && isOverBalance && (
-        <p className="exchange-form__error">Saldo insuficiente.</p>
-      )}
-
-      <button className="exchange-form__submit" type="submit" disabled={!canOperate}>
-        Confirmar
-      </button>
-
-      {message && <p className="exchange-form__success">{message}</p>}
+        sameCurrency={form.isSameCurrency}
+        belowMinimum={form.isBelowMinimum}
+        overBalance={form.isOverBalance}
+        error={form.error}
+        message={form.message}
+        sending={form.sending}
+        canOperate={form.canOperate}
+      />
     </form>
   );
 }
