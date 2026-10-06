@@ -8,30 +8,32 @@
 
 .landing__wrap {
   width: 100%;
-  max-width: 1240px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--page-gutter);
 }
 
 .landing-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 22px;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-5);
   border: 1px solid transparent;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
   font-weight: 600;
   text-decoration: none;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+    background-color var(--transition),
+    border-color var(--transition);
 }
 
 .landing-btn svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s ease;
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition);
 }
 
 .landing-btn:hover svg {
@@ -63,20 +65,21 @@
   color: var(--color-text-muted);
 }
 
+/* El espacio entre secciones crece con la pantalla. */
 .landing-section {
-  padding-top: 110px;
+  padding-top: clamp(var(--space-7), 10vw, 7rem);
 }
 
 .landing-section__head {
   display: grid;
-  gap: 18px;
-  margin-bottom: 56px;
+  gap: var(--space-4);
+  margin-bottom: clamp(var(--space-6), 6vw, 3.5rem);
 }
 
 .landing-section__title {
   margin: 0;
-  max-width: 700px;
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  max-width: 40ch;
+  font-size: var(--text-3xl);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.04em;
@@ -90,10 +93,4 @@
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--color-accent);
-}
-
-@media (min-width: 768px) {
-  .landing__wrap {
-    padding: 0 40px;
-  }
 }
