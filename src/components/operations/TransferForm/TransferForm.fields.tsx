@@ -4,24 +4,24 @@ import type { Currency } from '../../../utils/exchange';
 import { formatMoney } from './TransferForm.utils';
 
 interface TransferFieldsProps {
-  cvu: string;
+  destination: string;
   currency: Currency;
   amount: string;
   reason: string;
   balance: number;
-  onCvuChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onDestinationChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onCurrencyChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   onAmountChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onReasonChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function TransferFields({
-  cvu,
+  destination,
   currency,
   amount,
   reason,
   balance,
-  onCvuChange,
+  onDestinationChange,
   onCurrencyChange,
   onAmountChange,
   onReasonChange,
@@ -29,12 +29,12 @@ function TransferFields({
   return (
     <>
       <label className="transfer-form__field">
-        <span className="transfer-form__label">CVU destino</span>
+        <span className="transfer-form__label">CVU o alias de destino</span>
         <input
           className="transfer-form__input"
-          value={cvu}
-          onChange={onCvuChange}
-          placeholder="Ingresá el CVU"
+          value={destination}
+          onChange={onDestinationChange}
+          placeholder="CVU de 22 dígitos o alias (ej. juan.123.atlas)"
         />
       </label>
 

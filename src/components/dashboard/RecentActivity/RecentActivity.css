@@ -10,12 +10,69 @@
   color: var(--color-text);
 }
 
-.recent-activity__empty {
-  padding: 24px;
+/* Card clickeable con la misma base que "Balance total". */
+.recent-activity__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
   border: 1px solid var(--color-border);
-  border-radius: 14px;
-  text-align: center;
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
   background-color: var(--color-surface);
+  transition: border-color 0.2s;
+}
+
+.recent-activity__card:hover {
+  border-color: var(--color-accent);
+}
+
+.recent-activity__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recent-activity__item:first-child {
+  padding-top: 0;
+}
+
+.recent-activity__item > div {
+  min-width: 0;
+}
+
+/* En el resumen, los motivos largos se cortan a 2 líneas. */
+.recent-activity__reason {
+  display: -webkit-box;
+  margin: 0 0 4px;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.recent-activity__date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.recent-activity__amount {
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+.recent-activity__more {
+  font-size: 0.875rem;
+  color: var(--color-accent);
+}
+
+.recent-activity__empty {
+  text-align: center;
 }
 
 .recent-activity__empty p {
@@ -27,4 +84,10 @@
 .recent-activity__empty span {
   font-size: 0.875rem;
   color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .recent-activity__card {
+    padding: 24px;
+  }
 }

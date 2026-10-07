@@ -1,0 +1,42 @@
+/* En mobile el texto va arriba y los botones abajo; en tablet todo en una fila. */
+.history-pagination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+}
+
+.history-pagination__info {
+  grid-column: 1 / -1;
+  order: -1;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.history-pagination__button {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  cursor: pointer;
+}
+
+.history-pagination__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .history-pagination {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .history-pagination__info {
+    grid-column: auto;
+    order: 0;
+  }
+}

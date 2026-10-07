@@ -14,7 +14,7 @@ export function useTransferForm({
   balances,
   onSuccess,
 }: UseTransferFormParams) {
-  const [cvu, setCvu] = useState('');
+  const [destination, setDestination] = useState('');
   const [currency, setCurrency] = useState<Currency>('ARS');
   const [amount, setAmount] = useState('');
   const [reason, setReason] = useState('');
@@ -30,7 +30,7 @@ export function useTransferForm({
   );
 
   const canSubmit =
-    cvu.trim() !== '' &&
+    destination.trim() !== '' &&
     !invalidAmount &&
     !sending;
 
@@ -44,14 +44,14 @@ export function useTransferForm({
 
     try {
       await createTransfer({
-        cvu_destino: cvu.trim(),
+        destino: destination.trim(),
         monto: numericAmount,
         motivo: reason.trim(),
         moneda: currency,
       });
 
       setMessage('Transferencia realizada correctamente.');
-      setCvu('');
+      setDestination('');
       setAmount('');
       setReason('');
       onSuccess();
@@ -67,7 +67,7 @@ export function useTransferForm({
   }
 
   return {
-    cvu,
+    destination,
     currency,
     amount,
     reason,
@@ -77,7 +77,7 @@ export function useTransferForm({
     numericAmount,
     balance,
     canSubmit,
-    setCvu,
+    setDestination,
     setCurrency,
     setAmount,
     setReason,

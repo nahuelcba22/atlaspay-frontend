@@ -1,0 +1,85 @@
+/* Misma base visual que la card de "Balance total". Mobile first. */
+.history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+}
+
+.history-card__label,
+.history-card__status,
+.history-item__detail,
+.history-item__date {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.history-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.history-item__info,
+.history-item__amounts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.history-item__info {
+  overflow-wrap: anywhere;
+}
+
+.history-item__amounts {
+  align-items: flex-start;
+  white-space: nowrap;
+}
+
+.history-item__title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.history-item__in {
+  color: var(--color-success);
+}
+
+.history-card__error,
+.history-item__out {
+  margin: 0;
+  color: var(--color-error);
+}
+
+/* Desde 480px el monto pasa a la derecha del detalle. */
+@media (min-width: 480px) {
+  .history-item {
+    flex-direction: row;
+  }
+
+  .history-item__amounts {
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .history-card {
+    padding: 24px;
+  }
+}
