@@ -67,14 +67,14 @@ function RegisterForm() {
       <PasswordField
         label="Contraseña"
         name="password"
-        placeholder="Ingresá una contraseña"
+        placeholder="Ingresa una contraseña"
         autoComplete="new-password"
       />
 
       <PasswordField
         label="Confirmar contraseña"
         name="confirmPassword"
-        placeholder="Repetí tu contraseña"
+        placeholder="Repite tu contraseña"
         autoComplete="new-password"
       />
 

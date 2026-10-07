@@ -4,18 +4,18 @@ import './HowItWorks.css';
 const STEPS = [
   {
     number: 'i.',
-    title: 'Abres tu cuenta',
-    text: 'Una billetera con cuatro saldos: pesos argentinos, soles, dólares y euros.',
+    title: 'Te registras en segundos y creas tu cuenta',
+    text: 'Reúne tus ingresos en pesos, soles, dólares o euros en un solo lugar.',
   },
   {
     number: 'ii.',
-    title: 'Eliges de qué a qué',
-    text: 'Ves la tasa real del día y cuánto recibes antes de confirmar. Sin sorpresas.',
+    title: 'Eliges de qué moneda a qué moneda necesitas convertir tu dinero',
+    text: 'Ves la tasa real del día y conviertes la moneda que necesites con un solo clic.',
   },
   {
     number: 'iii.',
-    title: 'Te llega el comprobante',
-    text: 'Cada operación queda en tu historial y recibes un email con el detalle.',
+    title: 'Recibes la confirmación al instante',
+    text: 'Cada operación queda en tu historial y recibes un email con el detalle exacto una vez confirmada.',
   },
 ];
 
@@ -26,7 +26,7 @@ function HowItWorks() {
         <span className="landing-eyebrow">Cómo funciona</span>
         <h2 className="landing-section__title">
           Convertir tu dinero no debería requerir{' '}
-          <em className="landing-serif">una calculadora.</em>
+          <em className="landing-serif">más esfuerzo.</em>
         </h2>
       </Reveal>
 

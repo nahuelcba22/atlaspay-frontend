@@ -29,20 +29,17 @@ function Hero() {
   return (
     <section className="hero">
       <motion.div initial="hidden" animate="visible" transition={{ staggerChildren: 0.12 }}>
-        <motion.div className="hero__meta" variants={fadeUp}>
-          <i />
-          ARS · PEN · USD · EUR
-        </motion.div>
+        <motion.div className="hero__meta" variants={fadeUp}></motion.div>
 
         <motion.h1 className="hero__title" variants={fadeUp}>
           Cuatro monedas.
-          <em className="landing-serif">Una sola cuenta.</em>
+          <em className="landing-serif">Todo en una sola cuenta.</em>
         </motion.h1>
 
         <motion.p className="hero__lead" variants={fadeUp}>
-          Para quien <strong>cobra en una moneda, estudia en otra y viaja con una tercera.</strong>{' '}
-          Atlaspay guarda tus pesos, soles, dólares y euros juntos, y te dice cuánto vale cada uno
-          hoy.
+          ¿Monedas y tipos de cambio distintos para cobrar, vivir y viajar?
+          <strong> Atlaspay une tus finanzas sin fronteras. </strong> Centraliza tus pesos, soles,
+          dólares o euros y convierte tu dinero en tiempo real con total libertad y confianza
         </motion.p>
 
         <motion.div className="hero__cta" variants={fadeUp}>

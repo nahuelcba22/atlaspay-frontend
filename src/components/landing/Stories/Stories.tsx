@@ -5,7 +5,7 @@ const STORIES = [
   {
     route: ['Lima', 'Buenos Aires'],
     quote: '“Me voy un semestre de intercambio y necesito saber cuánto me rinden mis soles.”',
-    text: 'Pasas de PEN a ARS cuando te conviene y ves el saldo de cada moneda en un solo lugar.',
+    text: 'Pasas de PEN a ARS cuando lo necesites y ves el saldo de cada moneda en un solo lugar.',
     pair: 'PEN → ARS',
   },
   {

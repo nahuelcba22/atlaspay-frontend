@@ -11,7 +11,7 @@ function Register() {
           <AuthBrand />
 
           <h1>Crear cuenta</h1>
-          <p>Creá tu cuenta para comenzar a gestionar tu billetera.</p>
+          <p>Crea tu cuenta para comenzar a gestionar tu billetera.</p>
         </header>
 
         <RegisterForm />
@@ -23,7 +23,7 @@ function Register() {
         <GoogleAuthButton />
 
         <p className="register-login">
-          ¿Ya tenés una cuenta? <a href="/login">Iniciar sesión</a>
+          ¿Ya tenies una cuenta? <a href="/login">Iniciar sesión</a>
         </p>
       </section>
     </main>

@@ -59,7 +59,7 @@ function Dashboard() {
         <section className="dashboard__welcome">
           <h1 className="dashboard__title">Tu billetera</h1>
           <p className="dashboard__subtitle">
-            Gestioná tus monedas desde un solo lugar.
+            Gestiona tus monedas desde un solo lugar.
           </p>
         </section>
 

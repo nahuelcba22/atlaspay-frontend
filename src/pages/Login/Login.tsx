@@ -11,19 +11,19 @@ function Login() {
           <AuthBrand />
 
           <h1>Iniciar sesión</h1>
-          <p>Ingresá a tu cuenta para administrar tu billetera.</p>
+          <p>Ingresa a tu cuenta para administrar tu billetera.</p>
         </header>
 
         <LoginForm />
 
         <div className="login-divider">
-          <span>o continuar con</span>
+          <span>o registrate con</span>
         </div>
 
         <GoogleAuthButton />
 
         <p className="login-register">
-          ¿No tenés una cuenta? <a href="/register">Crear cuenta</a>
+          ¿No tienes una cuenta? <a href="/register">Crear cuenta</a>
         </p>
       </section>
     </main>
