@@ -1,7 +1,20 @@
 @import './styles/variables.css';
+@import './styles/tokens.css';
 
 * {
   box-sizing: border-box;
+}
+
+/* Respeta a quien configura su sistema para reducir el movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 html {
@@ -30,6 +43,28 @@ input {
 
 button {
   cursor: pointer;
+}
+
+/* Marca visible al navegar con el teclado. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Evita que un texto largo sin espacios desborde su contenedor. */
+p,
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
 }
 
 #root {

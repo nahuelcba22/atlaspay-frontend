@@ -1,26 +1,26 @@
 .how-it-works {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   border-top: 1px solid var(--color-border);
 }
 
 .how-it-works__step {
   display: grid;
-  gap: 10px;
-  padding: 28px 0 32px;
+  gap: var(--space-2);
+  padding: var(--space-5) 0 var(--space-6);
   border-bottom: 1px solid var(--color-border);
 }
 
 .how-it-works__number {
   font-family: var(--landing-serif);
-  font-size: 2.2rem;
+  font-size: var(--text-2xl);
   line-height: 1;
   color: var(--color-primary);
 }
 
 .how-it-works__step h3 {
-  margin: 6px 0 0;
-  font-size: 1.2rem;
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-lg);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--color-text);
@@ -28,24 +28,23 @@
 
 .how-it-works__step p {
   margin: 0;
-  max-width: 340px;
+  max-width: 34ch;
   line-height: 1.6;
   color: var(--color-text-muted);
 }
 
-@media (min-width: 860px) {
+@media (min-width: 54rem) {
   .how-it-works {
-    grid-template-columns: repeat(3, 1fr);
     border-bottom: 1px solid var(--color-border);
   }
 
   .how-it-works__step {
-    padding: 34px 32px 40px 0;
+    padding: var(--space-6) var(--space-6) var(--space-7) 0;
     border-bottom: none;
   }
 
   .how-it-works__step + .how-it-works__step {
-    padding-left: 32px;
+    padding-left: var(--space-6);
     border-left: 1px solid var(--color-border);
   }
 }

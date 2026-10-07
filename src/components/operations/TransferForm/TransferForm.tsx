@@ -28,13 +28,13 @@ function TransferForm({
       </h2>
 
       <TransferFields
-        cvu={form.cvu}
+        destination={form.destination}
         currency={form.currency}
         amount={form.amount}
         reason={form.reason}
         balance={form.balance}
-        onCvuChange={(event) =>
-          form.setCvu(event.target.value)
+        onDestinationChange={(event) =>
+          form.setDestination(event.target.value)
         }
         onCurrencyChange={(event) =>
           form.setCurrency(

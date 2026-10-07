@@ -18,7 +18,7 @@ interface TransferHistoryResponse {
 }
 
 interface CreateTransferData {
-  cvu_destino: string;
+  destino: string;
   monto: number;
   motivo: string;
   moneda: string;

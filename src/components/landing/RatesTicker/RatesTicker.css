@@ -8,7 +8,7 @@
 
 .rates-ticker__tag {
   flex: none;
-  padding: 16px 20px;
+  padding: var(--space-4) var(--space-4);
   border-right: 1px solid var(--color-border);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
@@ -22,18 +22,18 @@
 
 .rates-ticker__track {
   display: flex;
-  gap: 48px;
-  padding-left: 48px;
+  gap: var(--space-6);
+  padding-left: var(--space-6);
   width: max-content;
   white-space: nowrap;
-  font-size: 0.92rem;
+  font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
   color: var(--color-text);
   animation: rates-ticker 40s linear infinite;
 }
 
 .rates-ticker__item b {
-  margin-right: 10px;
+  margin-right: var(--space-2);
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--color-text-muted);
@@ -45,8 +45,12 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (min-width: 48rem) {
+  .rates-ticker__tag {
+    padding: var(--space-4) var(--space-5);
+  }
+
   .rates-ticker__track {
-    animation: none;
+    font-size: 0.92rem;
   }
 }
