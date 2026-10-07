@@ -1,7 +1,7 @@
 import { useState, type SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../services/authService';
-import { saveToken } from '../../../services/authStorage';
+import { saveToken, saveRole } from '../../../services/authStorage';
 import { validateLogin } from '../../../utils/authValidation';
 import PasswordField from './PasswordField';
 import './AuthForm.css';
@@ -37,6 +37,7 @@ function LoginForm() {
 
       // Guarda el JWT recibido antes de acceder al Dashboard.
       saveToken(response.token);
+      saveRole(response.usuario.role);
       navigate('/dashboard');
     } catch (error) {
       setError(error instanceof Error ? error.message : 'No se pudo iniciar sesión.');
