@@ -1,24 +1,25 @@
 .stories {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--space-5);
 }
 
 .stories__card {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  min-height: 250px;
-  padding: 28px;
+  gap: var(--space-4);
+  min-height: 15rem;
+  padding: var(--space-5);
   border: 1px solid var(--color-border);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
 }
 
 .stories__route {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-2);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -28,12 +29,12 @@
 .stories__place {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-2);
 }
 
 .stories__place i {
   display: block;
-  width: 40px;
+  width: 2.5rem;
   height: 1px;
   background-color: var(--color-border);
 }
@@ -41,28 +42,24 @@
 .stories__card blockquote {
   margin: 0;
   font-family: var(--landing-serif);
-  font-size: 1.55rem;
-  line-height: 1.2;
+  font-size: var(--text-xl);
+  line-height: 1.25;
   color: var(--color-text);
 }
 
 .stories__card p {
   margin: auto 0 0;
-  font-size: 0.92rem;
+  font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--color-text-muted);
 }
 
 .stories__pair {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--color-accent);
 }
 
-@media (min-width: 860px) {
-  .stories {
-    grid-template-columns: 1.2fr 1fr 1fr;
-  }
-
+@media (min-width: 54rem) {
   .stories__card:first-child {
     background-color: var(--color-surface-light);
   }
