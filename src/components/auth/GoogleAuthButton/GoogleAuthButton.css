@@ -2,8 +2,8 @@
 .google-auth-container {
   display: flex;
   flex-direction: column;
+  gap: var(--space-2);
   width: 100%;
-  gap: 8px;
 }
 
 /* Botón personalizado de acceso con Google. */
@@ -11,33 +11,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: var(--space-3);
   width: 100%;
-  min-height: 44px;
-  padding: 12px 16px;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  background: #0f172a;
-  color: #f8fafc;
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font: inherit;
   font-weight: 600;
-  cursor: pointer;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
 }
 
 .google-auth-button:hover {
-  background: #172033;
+  border-color: var(--color-text-muted);
+  background-color: var(--color-surface);
 }
 
 .google-auth-button :is(img, svg) {
-  width: 18px;
-  height: 18px;
   flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 /* Error de autenticación con Google. */
 .google-auth-error {
   margin: 0;
-  color: #f87171;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   text-align: center;
+  color: var(--color-error);
 }
