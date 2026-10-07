@@ -9,7 +9,7 @@ function LandingFooter() {
         <Reveal>
           <h2 className="landing-closing__title">
             Tu dinero ya viaja contigo.{' '}
-            <em className="landing-serif">Ahora también se entiende.</em>
+            <em className="landing-serif">Ahora bajo tu control.</em>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -33,9 +33,9 @@ function LandingFooter() {
           Atlaspay
         </div>
         <div className="landing-footer__row">
-          <span>© 2026 Atlaspay · Proyecto Final Henry</span>
+          <span> 2026 Atlaspay · Proyecto Final</span>
           <span>Operaciones simuladas. No se usa dinero real.</span>
-          <a href="mailto:atlaspay.dev@gmail.com">atlaspay.dev@gmail.com</a>
+          <a href="mailto:atlaspay.dev@gmail.com">Contacto: atlaspay.dev@gmail.com</a>
         </div>
       </footer>
     </>

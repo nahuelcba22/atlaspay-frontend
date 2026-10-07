@@ -16,7 +16,7 @@ function RecentActivity({ transfers }: RecentActivityProps) {
         {transfers.length === 0 ? (
           <div className="recent-activity__empty">
             <p>Todavía no hay movimientos.</p>
-            <span>Tus operaciones recientes aparecerán acá.</span>
+            <span>Tus operaciones recientes aparecerán aquí.</span>
           </div>
         ) : (
           <div className="recent-activity__list">

@@ -62,7 +62,7 @@ function LoginForm() {
       <PasswordField
         label="Contraseña"
         name="password"
-        placeholder="Ingresá tu contraseña"
+        placeholder="Ingresa tu contraseña"
         autoComplete="current-password"
       />
 
