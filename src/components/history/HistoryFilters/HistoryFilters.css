@@ -1,0 +1,51 @@
+/* Mobile: selects a lo ancho y fechas de a dos; 3 columnas en tablet; una fila en desktop. */
+.history-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: var(--space-3);
+}
+
+.history-filters > select,
+.history-filters__clear {
+  grid-column: 1 / -1;
+}
+
+.history-filters__date {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.history-filters__input,
+.history-filters__clear {
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .history-filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .history-filters > select,
+  .history-filters__clear {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .history-filters {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) auto;
+  }
+}
