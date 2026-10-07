@@ -1,5 +1,5 @@
-import { createTransactionContent } from './transactionEmail.content';
-import type { TransactionEmailRequest } from './transactionEmail.types';
+import { createTransactionContent } from './transactionEmail.content.js';
+import type { TransactionEmailRequest } from './transactionEmail.types.js';
 
 // Construye la presentación final del email.
 export function createTransactionEmail(

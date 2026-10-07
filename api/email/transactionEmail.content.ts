@@ -1,8 +1,8 @@
 import {
   formatTransactionAmount,
   formatTransactionType,
-} from './transactionEmail.format';
-import type { TransactionEmailRequest } from './transactionEmail.types';
+} from './transactionEmail.format.js';
+import type { TransactionEmailRequest } from './transactionEmail.types.js';
 
 // Genera únicamente el bloque con los datos de la operación.
 export function createTransactionContent(

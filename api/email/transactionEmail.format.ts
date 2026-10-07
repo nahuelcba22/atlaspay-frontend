@@ -1,7 +1,7 @@
 import type {
   TransactionData,
   TransactionType,
-} from './transactionEmail.types';
+} from './transactionEmail.types.js';
 
 // Nombres visibles para cada operación.
 const labels: Record<TransactionType, string> = {

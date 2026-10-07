@@ -1,8 +1,8 @@
 /// <reference types="node" />
 
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
-import { createTransactionEmail } from './email/transactionEmail.template';
-import type { TransactionEmailRequest } from './email/transactionEmail.types';
+import { createTransactionEmail } from './email/transactionEmail.template.js';
+import type { TransactionEmailRequest } from './email/transactionEmail.types.js';
 
 // Cliente reutilizable de AWS SES.
 const ses = new SESClient({
@@ -21,7 +21,7 @@ function isValidRequest(body: TransactionEmailRequest) {
 }
 
 // Vercel Function responsable únicamente del envío.
-export default async function handler(request: Request) {
+async function handler(request: Request) {
   if (request.method !== 'POST') {
     return Response.json(
       { error: 'Método no permitido' },
@@ -30,9 +30,19 @@ export default async function handler(request: Request) {
   }
 
   try {
+    console.info('[EMAIL] Vercel recibió una solicitud.');
+
     const body = (await request.json()) as TransactionEmailRequest;
 
+    console.info('[EMAIL] Datos recibidos:', {
+      status: body.status,
+      type: body.transaction?.type,
+      currency: body.transaction?.currency,
+    });
+
     if (!isValidRequest(body)) {
+      console.error('[EMAIL] Body inválido o incompleto.');
+
       return Response.json(
         { error: 'Faltan datos obligatorios' },
         { status: 400 },
@@ -42,15 +52,22 @@ export default async function handler(request: Request) {
     const from = process.env.AWS_SES_FROM_EMAIL;
 
     if (!from) {
+      console.error('[EMAIL] Falta AWS_SES_FROM_EMAIL.');
+
       return Response.json(
         { error: 'Falta AWS_SES_FROM_EMAIL' },
         { status: 500 },
       );
     }
 
+    console.info('[EMAIL] Intentando envío con SES:', {
+      region: process.env.AWS_REGION,
+      type: body.transaction.type,
+    });
+
     const { subject, html } = createTransactionEmail(body);
 
-    await ses.send(
+    const result = await ses.send(
       new SendEmailCommand({
         Source: from,
         Destination: { ToAddresses: [body.to] },
@@ -63,11 +80,16 @@ export default async function handler(request: Request) {
       }),
     );
 
+    console.info('[EMAIL] SES confirmó el envío:', {
+      messageId: result.MessageId,
+    });
+
     return Response.json({
       message: 'Correo enviado correctamente',
+      messageId: result.MessageId,
     });
   } catch (error) {
-    console.error('Error enviando correo con AWS SES:', error);
+    console.error('[EMAIL] Error Vercel -> AWS SES:', error);
 
     return Response.json(
       { error: 'No se pudo enviar el correo' },
@@ -75,3 +97,6 @@ export default async function handler(request: Request) {
     );
   }
 }
+
+// Firma web de Vercel: recibe un Request y devuelve un Response.
+export default { fetch: handler };
