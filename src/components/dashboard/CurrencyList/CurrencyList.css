@@ -1,23 +1,19 @@
 .currency-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .currency-list__title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
+  letter-spacing: -0.01em;
   color: var(--color-text);
 }
 
+/* Las tarjetas se acomodan solas según el ancho disponible. */
 .currency-list__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-@media (min-width: 768px) {
-  .currency-list__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: var(--space-3);
 }

@@ -1,26 +1,32 @@
 .balance-card {
-  padding: 24px;
+  padding: var(--space-5);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .balance-card__label {
-  margin: 0 0 8px;
-  font-size: 0.875rem;
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .balance-card__amount {
   margin: 0;
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
   color: var(--color-text);
 }
 
 .balance-card__reference {
   display: block;
-  margin-top: 8px;
-  font-size: 0.8rem;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
   color: var(--color-accent);
 }
