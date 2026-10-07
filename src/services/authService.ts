@@ -16,6 +16,7 @@ interface AuthUser {
   id: number;
   nombre: string;
   email: string;
+  role: string;
 }
 
 interface LoginResponse {
