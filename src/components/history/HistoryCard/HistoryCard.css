@@ -2,11 +2,11 @@
 .history-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
   min-width: 0;
-  padding: 16px;
+  padding: var(--space-4);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
 }
 
@@ -15,7 +15,7 @@
 .history-item__detail,
 .history-item__date {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 
@@ -29,8 +29,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 12px;
-  padding: 14px 0;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
   border-top: 1px solid var(--color-border);
 }
 
@@ -38,7 +38,7 @@
 .history-item__amounts {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-1);
   min-width: 0;
 }
 
@@ -80,6 +80,6 @@
 
 @media (min-width: 768px) {
   .history-card {
-    padding: 24px;
+    padding: var(--space-5);
   }
 }
