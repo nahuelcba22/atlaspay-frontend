@@ -141,15 +141,21 @@ function ChatAssistant() {
         </section>
       )}
 
-      <button
-        className="chat-assistant__toggle"
-        type="button"
-        onClick={() => setIsOpen((current) => !current)}
-        aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente'}
-        aria-expanded={isOpen}
-      >
-        {isOpen ? '×' : '?'}
-      </button>
+      <div className="chat-assistant__toggle-wrapper">
+        {!isOpen && (
+          <span className="chat-assistant__tooltip">Asistente IA</span>
+        )}
+
+        <button
+          className="chat-assistant__toggle"
+          type="button"
+          onClick={() => setIsOpen((current) => !current)}
+          aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente'}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? '×' : '?'}
+        </button>
+      </div>
     </div>
   );
 }

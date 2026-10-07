@@ -27,6 +27,46 @@
 }
 
 /* El panel se adapta al alto y ancho disponibles, sin tapar toda la pantalla. */
+
+.chat-assistant__toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.chat-assistant__tooltip {
+  position: absolute;
+  right: calc(100% + 10px);
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(0.25rem);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+.chat-assistant__toggle-wrapper:hover .chat-assistant__tooltip,
+.chat-assistant__toggle-wrapper:focus-within .chat-assistant__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .chat-assistant__tooltip {
+    position: static;
+    margin-right: 10px;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .chat-assistant__panel {
   display: flex;
   flex-direction: column;
