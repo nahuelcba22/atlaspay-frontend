@@ -1,35 +1,36 @@
 /* Página de Registro. */
 .register-page {
-  box-sizing: border-box;
-  min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 16px;
-  background: #0b1220;
-  color: #f8fafc;
+  min-height: 100dvh;
+  padding: var(--space-4);
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 .register-card {
-  box-sizing: border-box;
   width: 100%;
-  max-width: 420px;
-  padding: 24px;
-  border-radius: 16px;
-  background: #111827;
+  max-width: 26rem;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
 }
 
 .register-header {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .register-header h1 {
-  margin: 0 0 12px;
-  font-size: 2rem;
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
 }
 
 .register-header p,
 .register-login {
-  color: #94a3b8;
+  color: var(--color-text-muted);
 }
 
 .register-header p {
@@ -37,23 +38,24 @@
 }
 
 .register-login a {
-  color: #3b82f6;
   font-weight: 700;
+  color: var(--color-primary);
 }
 
 .register-divider {
-  margin: 28px 0 18px;
-  color: #94a3b8;
+  margin: var(--space-6) 0 var(--space-4);
+  font-size: var(--text-sm);
   text-align: center;
+  color: var(--color-text-muted);
 }
 
 .register-login {
-  margin: 20px 0 0;
+  margin: var(--space-5) 0 0;
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .register-card {
-    padding: 32px;
+    padding: var(--space-6);
   }
 }
