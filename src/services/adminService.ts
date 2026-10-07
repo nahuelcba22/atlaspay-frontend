@@ -8,7 +8,7 @@ export interface AdminUser {
 
 export interface AdminAccount {
   id?: string;
-  usuario?: AdminUser;
+  Usuario?: AdminUser;
 }
 
 export interface AdminTransaction {

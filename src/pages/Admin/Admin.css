@@ -115,6 +115,92 @@
   color: var(--color-text-muted);
 }
 
+.admin-page__back {
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  color: var(--color-accent);
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-page__back:hover {
+  text-decoration: underline;
+}
+
+.admin-navigation {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.admin-navigation button {
+  padding: 12px 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  color: var(--color-text);
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.admin-navigation button:hover {
+  background-color: var(--color-surface-light);
+}
+
+.admin-section {
+  scroll-margin-top: 20px;
+}
+
+.admin-section__filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.admin-section__filter label {
+  width: 100%;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-section__filter input {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  font: inherit;
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.admin-section__filter button {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text-muted);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-section__filter button:hover {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+}
+
 @media (min-width: 700px) {
   .admin-page {
     padding: 32px 24px 56px;
@@ -122,6 +208,14 @@
 
   .admin-summary {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-navigation {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-section__filter label {
+    width: auto;
   }
 
   .admin-transaction {
