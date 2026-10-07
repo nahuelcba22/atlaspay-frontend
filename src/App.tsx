@@ -8,6 +8,7 @@ import Operations from './pages/Operations/Operations';
 import Profile from './pages/Profile/Profile';
 import Register from './pages/Register/Register';
 import Transfers from './pages/Transfers/Transfers';
+import Admin from './pages/Admin/Admin';
 
 function App() {
   return (
@@ -50,6 +51,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
             </ProtectedRoute>
           }
         />

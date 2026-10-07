@@ -1,0 +1,135 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 24px 16px 48px;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.admin-page__container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.admin-page__header {
+  margin-bottom: 24px;
+}
+
+.admin-page__header h1,
+.admin-section h2,
+.admin-transaction p {
+  margin: 0;
+}
+
+.admin-page__header p,
+.admin-section__header p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+}
+
+.admin-summary {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-summary__card,
+.admin-section {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.admin-summary__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+
+.admin-summary__label,
+.admin-summary__description,
+.admin-transaction__details {
+  color: var(--color-text-muted);
+}
+
+.admin-summary__value {
+  font-size: 2rem;
+}
+
+.admin-section {
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.admin-section__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.admin-section__count {
+  min-width: 36px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-align: center;
+  background: var(--color-surface-light);
+  color: var(--color-accent);
+}
+
+.admin-list {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-transaction {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.admin-transaction__users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-transaction__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.admin-transaction__reason {
+  margin-top: 5px !important;
+  color: var(--color-text-muted);
+}
+
+.admin-section__empty {
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 700px) {
+  .admin-page {
+    padding: 32px 24px 56px;
+  }
+
+  .admin-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-transaction {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .admin-transaction__details {
+    text-align: right;
+  }
+}
