@@ -1,68 +1,88 @@
 .exchange-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
   width: 100%;
-  max-width: 480px;
-  padding: 24px;
+  max-width: 30rem;
+  padding: var(--space-5);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .exchange-form__title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
+  letter-spacing: -0.01em;
   color: var(--color-text);
 }
 
+/* Las monedas se apilan si no entran lado a lado. */
 .exchange-form__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .exchange-form__row .exchange-form__field {
-  flex: 1;
+  flex: 1 1 7rem;
+  min-width: 0;
 }
 
 .exchange-form__field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .exchange-form__label {
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 
 .exchange-form__input {
-  padding: 10px 12px;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font: inherit;
   color: var(--color-text);
   background-color: var(--color-surface-light);
+  transition: border-color var(--transition);
+}
+
+.exchange-form__input:hover {
+  border-color: var(--color-text-muted);
 }
 
 .exchange-form__hint {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 
 .exchange-form__swap {
-  padding: 10px 12px;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   color: var(--color-accent);
   background-color: var(--color-surface-light);
+  transition: border-color var(--transition);
+}
+
+.exchange-form__swap:hover {
+  border-color: var(--color-accent);
 }
 
 .exchange-form__summary {
-  padding: 12px;
-  border-radius: 10px;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
   background-color: var(--color-surface-light);
+  font-variant-numeric: tabular-nums;
 }
 
 .exchange-form__summary p {
@@ -71,10 +91,19 @@
 }
 
 .exchange-form__summary .exchange-form__result {
-  margin-top: 6px;
-  font-size: 1.25rem;
+  margin-top: var(--space-1);
+  font-size: var(--text-xl);
   font-weight: 700;
   color: var(--color-text);
+}
+
+.exchange-form__summary .exchange-form__updated {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.exchange-form__summary .exchange-form__error {
+  color: var(--color-error);
 }
 
 .exchange-form__error {
@@ -88,24 +117,21 @@
 }
 
 .exchange-form__submit {
-  padding: 12px;
+  min-height: 2.75rem;
+  padding: var(--space-3);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   color: var(--color-text);
   background-color: var(--color-primary);
+  transition: background-color var(--transition);
+}
+
+.exchange-form__submit:hover:not(:disabled) {
+  background-color: #2f6fe0;
 }
 
 .exchange-form__submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.exchange-form__summary .exchange-form__updated {
-  margin-top: 6px;
-  font-size: 0.8rem;
-}
-
-.exchange-form__summary .exchange-form__error {
-  color: var(--color-error);
 }
