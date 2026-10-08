@@ -1,13 +1,11 @@
+import { formatCurrency } from '../../../utils/currency';
 import type { Currency } from '../../../utils/exchange';
 
 export function formatMoney(
   value: number,
   currency: Currency,
 ): string {
-  return value.toLocaleString('es-AR', {
-    style: 'currency',
-    currency,
-  });
+  return formatCurrency(value, currency);
 }
 
 export function isTransferAmountInvalid(

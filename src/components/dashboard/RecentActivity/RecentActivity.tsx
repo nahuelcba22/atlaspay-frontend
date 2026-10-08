@@ -1,3 +1,4 @@
+import { formatCurrency } from '../../../utils/currency';
 import { Link } from 'react-router-dom';
 import type { Transfer } from '../../../services/transferService';
 import './RecentActivity.css';
@@ -30,10 +31,7 @@ function RecentActivity({ transfers }: RecentActivityProps) {
                 </div>
 
                 <strong className="recent-activity__amount">
-                  {Number(transfer.monto).toLocaleString('es-AR', {
-                    style: 'currency',
-                    currency: transfer.moneda,
-                  })}
+                  {formatCurrency(Number(transfer.monto), transfer.moneda)}
                 </strong>
               </article>
             ))}

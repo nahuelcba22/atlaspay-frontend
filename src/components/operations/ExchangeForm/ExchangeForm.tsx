@@ -1,3 +1,4 @@
+import { formatCurrency } from '../../../utils/currency';
 import type { AccountBalances } from '../../../services/accountService';
 import type { Currency } from '../../../utils/exchange';
 import ExchangeFields from './ExchangeForm.fields';
@@ -11,10 +12,7 @@ interface ExchangeFormProps {
 }
 
 function formatMoney(value: number, currency: Currency) {
-  return value.toLocaleString('es-AR', {
-    style: 'currency',
-    currency,
-  });
+  return formatCurrency(value, currency);
 }
 
 function ExchangeForm({ balances, onSuccess }: ExchangeFormProps) {
