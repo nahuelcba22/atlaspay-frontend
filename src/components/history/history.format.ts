@@ -1,3 +1,4 @@
+import { formatCurrency } from '../../utils/currency';
 import type { Movement, MovementDirection, MovementType } from '../../services/historyService';
 
 export const TYPE_LABELS: Record<MovementType, string> = {
@@ -13,7 +14,7 @@ export const DIRECTION_LABELS: Record<MovementDirection, string> = {
 };
 
 export function formatAmount(value: number, currency: string): string {
-  return value.toLocaleString('es-AR', { style: 'currency', currency });
+  return formatCurrency(value, currency);
 }
 
 // Fecha y hora en la zona horaria del usuario.

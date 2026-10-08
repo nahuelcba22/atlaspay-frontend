@@ -1,3 +1,4 @@
+import { formatCurrency } from '../../../utils/currency';
 import './CurrencyCard.css';
 
 type Currency = 'ARS' | 'USD' | 'EUR' | 'PEN';
@@ -8,10 +9,7 @@ interface CurrencyCardProps {
 }
 
 function CurrencyCard({ currency, balance }: CurrencyCardProps) {
-  const formattedBalance = balance.toLocaleString('es-AR', {
-    style: 'currency',
-    currency,
-  });
+  const formattedBalance = formatCurrency(balance, currency);
 
   return (
     <article className="currency-card">
