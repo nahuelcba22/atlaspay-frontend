@@ -1,8 +1,14 @@
+/* Contenedor de la escena: las etiquetas de las monedas se anclan acá. */
+.hero-scene-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .hero-scene {
   width: 100%;
   height: 100%;
-  /* Evita que las etiquetas de las monedas se salgan de la escena. */
-  overflow: hidden;
 }
 
 .hero-scene__label {
