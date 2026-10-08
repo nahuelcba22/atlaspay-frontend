@@ -10,20 +10,43 @@
 }
 
 .chat-assistant__toggle {
-  width: 3.5rem;
-  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 0.7rem;
   border: none;
   border-radius: var(--radius-pill);
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: 700;
+  line-height: 1;
   color: #fff;
-  background-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transition: background-color var(--transition);
+  background: linear-gradient(135deg, var(--color-primary), #2f6fe0);
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 0 rgba(59, 130, 246, 0.45);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .chat-assistant__toggle:hover {
-  background-color: #2f6fe0;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* El robot flota suavemente mientras espera. */
+.chat-assistant__toggle .robot-icon {
+  animation: chat-float 3.2s ease-in-out infinite;
+}
+
+@keyframes chat-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
 }
 
 /* El panel se adapta al alto y ancho disponibles, sin tapar toda la pantalla. */
@@ -34,28 +57,60 @@
   align-items: center;
 }
 
+/* Globo de diálogo: aparece al rato, se despide solo y vuelve al pasar el mouse. */
 .chat-assistant__tooltip {
   position: absolute;
-  right: calc(100% + 10px);
-  padding: 0.45rem 0.7rem;
+  right: calc(100% + var(--space-3));
+  max-width: min(14rem, calc(100vw - 7rem));
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: var(--color-text);
   background-color: var(--color-surface);
-  font-size: 0.8rem;
-  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-sm);
+  line-height: 1.35;
   pointer-events: none;
   opacity: 0;
-  transform: translateX(0.25rem);
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
+  transform: translateX(0.5rem);
+  animation: chat-hint 11s ease 2.5s both;
+}
+
+/* Colita del globo apuntando al robot. */
+.chat-assistant__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -0.35rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-top: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .chat-assistant__toggle-wrapper:hover .chat-assistant__tooltip,
 .chat-assistant__toggle-wrapper:focus-within .chat-assistant__tooltip {
+  animation: none;
   opacity: 1;
   transform: translateX(0);
+}
+
+@keyframes chat-hint {
+  0% {
+    opacity: 0;
+    transform: translateX(0.5rem);
+  }
+  8%,
+  85% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0.5rem);
+  }
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -86,6 +141,25 @@
   gap: var(--space-2);
   padding: var(--space-4);
   border-bottom: 1px solid var(--color-border);
+}
+
+.chat-assistant__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.chat-assistant__avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.4rem;
+  border-radius: var(--radius-pill);
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), #2f6fe0);
 }
 
 .chat-assistant__title {

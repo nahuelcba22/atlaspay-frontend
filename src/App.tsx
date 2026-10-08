@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute/ProtectedRoute';
 import ChatAssistant from './components/chat/ChatAssistant/ChatAssistant';
+import PrivateNavbar from './components/layout/PrivateNavbar/PrivateNavbar';
 import Dashboard from './pages/Dashboard/Dashboard';
 import History from './pages/History/History';
 import Landing from './pages/Landing/Landing';
@@ -15,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* Define las rutas públicas y privadas de la aplicación. */}
+      <PrivateNavbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />

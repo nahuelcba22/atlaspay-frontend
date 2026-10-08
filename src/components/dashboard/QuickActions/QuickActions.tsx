@@ -12,7 +12,7 @@ function QuickActions() {
         <button
           className="quick-actions__button"
           type="button"
-          onClick={() => navigate('/operaciones')}
+          onClick={() => navigate('/operaciones?tipo=comprar')}
         >
           Comprar
         </button>
@@ -20,7 +20,7 @@ function QuickActions() {
         <button
           className="quick-actions__button"
           type="button"
-          onClick={() => navigate('/operaciones')}
+          onClick={() => navigate('/operaciones?tipo=vender')}
         >
           Vender
         </button>
@@ -28,7 +28,7 @@ function QuickActions() {
         <button
           className="quick-actions__button"
           type="button"
-          onClick={() => navigate('/operaciones')}
+          onClick={() => navigate('/operaciones?tipo=cambiar')}
         >
           Cambiar
         </button>

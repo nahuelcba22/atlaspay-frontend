@@ -1,15 +1,19 @@
+/* La página ocupa todo el ancho para que la barra de navegación llegue de lado a lado. */
 .dashboard {
   width: 100%;
-  max-width: var(--page-max);
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 0 var(--page-gutter) var(--space-7);
+  padding-bottom: var(--space-7);
 }
 
+/* El contenido sí se limita y se centra. */
 .dashboard__content {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--page-gutter) 0;
 }
 
 .dashboard__welcome {

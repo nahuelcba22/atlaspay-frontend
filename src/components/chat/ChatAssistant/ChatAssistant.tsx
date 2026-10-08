@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getToken } from '../../../services/authStorage';
 import { sendChatMessage } from '../../../services/chatService';
+import RobotIcon from './RobotIcon/RobotIcon';
 import './ChatAssistant.css';
 
 interface ChatMessage {
@@ -72,9 +73,14 @@ function ChatAssistant() {
       {isOpen && (
         <section className="chat-assistant__panel" aria-label="Asistente de Atlaspay">
           <header className="chat-assistant__header">
-            <div>
-              <p className="chat-assistant__title">Asistente Atlaspay</p>
-              <p className="chat-assistant__subtitle">Con inteligencia artificial</p>
+            <div className="chat-assistant__identity">
+              <span className="chat-assistant__avatar">
+                <RobotIcon />
+              </span>
+              <div>
+                <p className="chat-assistant__title">Asistente Atlaspay</p>
+                <p className="chat-assistant__subtitle">Con inteligencia artificial</p>
+              </div>
             </div>
             <button
               className="chat-assistant__close"
@@ -142,9 +148,7 @@ function ChatAssistant() {
       )}
 
       <div className="chat-assistant__toggle-wrapper">
-        {!isOpen && (
-          <span className="chat-assistant__tooltip">Asistente IA</span>
-        )}
+        {!isOpen && <span className="chat-assistant__tooltip">¿Tienes dudas? Pregúntame</span>}
 
         <button
           className="chat-assistant__toggle"
@@ -153,7 +157,7 @@ function ChatAssistant() {
           aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente'}
           aria-expanded={isOpen}
         >
-          {isOpen ? '×' : '?'}
+          {isOpen ? '×' : <RobotIcon />}
         </button>
       </div>
     </div>

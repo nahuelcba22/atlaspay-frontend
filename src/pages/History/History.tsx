@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
+import BackLink from '../../components/layout/BackLink/BackLink';
 import HistoryCard from '../../components/history/HistoryCard/HistoryCard';
 import '../Transfers/Transfers.css';
 
 function History() {
   return (
     <main className="transfers">
-      <Link className="transfers__back" to="/dashboard">
-        ← Volver al dashboard
-      </Link>
+      <BackLink />
 
       <h1 className="transfers__title">Historial</h1>
 

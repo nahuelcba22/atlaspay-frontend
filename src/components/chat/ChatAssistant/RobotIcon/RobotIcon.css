@@ -1,0 +1,58 @@
+.robot-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* La bombilla de la antena late como si estuviera pensando. */
+.robot-icon__bulb {
+  animation: robot-bulb 2.4s ease-in-out infinite;
+}
+
+/* Parpadea de vez en cuando. */
+.robot-icon__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: robot-blink 5s ease-in-out infinite;
+}
+
+/* Las burbujas de pensamiento aparecen una tras otra. */
+.robot-icon__dot {
+  animation: robot-dot 2.4s ease-in-out infinite;
+}
+
+.robot-icon__dot--2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes robot-bulb {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes robot-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes robot-dot {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
