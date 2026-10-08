@@ -60,7 +60,7 @@ const Admin = () => {
           type="button"
           onClick={() => navigate('/dashboard')}
         >
-          ← Volver al dashboard
+          ← Regresar a mi billetera
         </button>
 
         <header className="admin-page__header">

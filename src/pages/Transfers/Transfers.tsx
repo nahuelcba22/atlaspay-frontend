@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import BackLink from '../../components/layout/BackLink/BackLink';
 import TransferForm from '../../components/operations/TransferForm/TransferForm';
 import {
   getMyAccount,
@@ -43,9 +43,7 @@ function Transfers() {
 
   return (
     <main className="transfers">
-      <Link className="transfers__back" to="/dashboard">
-        ← Volver al dashboard
-      </Link>
+      <BackLink />
 
       <h1 className="transfers__title">Transferencias</h1>
 
