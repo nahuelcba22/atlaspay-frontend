@@ -9,13 +9,11 @@
   backdrop-filter: blur(12px);
 }
 
-/* En celular: marca y usuario arriba, enlaces abajo. */
+/* En celular: marca a la izquierda y usuario a la derecha. (SE QUITÓ EL NAV DE ABAJO) */
 .dashboard-header__inner {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-areas:
-    'brand user'
-    'nav nav';
+  grid-template-areas: 'brand user';
   align-items: center;
   gap: var(--space-2) var(--space-4);
   width: 100%;
@@ -49,10 +47,10 @@
   color: var(--color-primary);
 }
 
-/* Enlaces: se deslizan de lado si no entran en pantallas angostas. */
+/* Enlaces: SE OCULTAN POR DEFECTO EN CELULAR */
 .dashboard-header__nav {
   grid-area: nav;
-  display: flex;
+  display: none; /* <-- Magia Mobile First: Apagado en celular */
   align-items: center;
   gap: var(--space-1);
   overflow-x: auto;
@@ -207,7 +205,7 @@
   font-weight: 600;
 }
 
-/* Pantallas medianas: una sola fila, con el menú de Operaciones desplegable. */
+/* Pantallas medianas (PC/Tablets): una sola fila, reaparecen los menús de navegación. */
 @media (min-width: 48rem) {
   .dashboard-header__inner {
     grid-template-columns: auto 1fr auto;
@@ -217,6 +215,7 @@
   }
 
   .dashboard-header__nav {
+    display: flex; /* <-- Hacemos que reaparezca la navegación en PC */
     justify-self: center;
     overflow: visible;
   }
