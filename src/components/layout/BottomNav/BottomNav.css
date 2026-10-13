@@ -8,7 +8,7 @@
   background-color: var(--color-background);
   border-top: 1px solid var(--color-border);
   display: flex !important;
-  flex-direction: row !important; /* Fuerza a que se pongan uno al lado del otro */
+  flex-direction: row !important;
   justify-content: space-around !important;
   align-items: center !important;
   z-index: 1000;
@@ -36,11 +36,28 @@
 .nav-icon {
   font-size: 1.5rem;
   margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-label {
   font-size: 0.7rem;
   font-weight: 600;
+}
+
+/* --- ESTILOS PARA LOS ÍCONOS PNG (NUEVO) --- */
+.nav-png-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  /* Si la imagen PNG tiene fondo transparente, se verá perfecta */
+}
+
+/* Pequeño efecto de zoom cuando el ítem está activo */
+.nav-item.active .nav-png-icon {
+  transform: scale(1.15);
 }
 
 /* --- BOTÓN FLOTANTE CENTRAL (FAB) --- */
