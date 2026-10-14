@@ -36,6 +36,17 @@ body {
   background-color: var(--color-background);
 }
 
+@media (max-width: 48rem) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    padding-bottom: 5rem;
+  }
+}
+
 button,
 input {
   font: inherit;
