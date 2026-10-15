@@ -52,6 +52,15 @@ input {
   font: inherit;
 }
 
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 button {
   cursor: pointer;
 }

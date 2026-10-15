@@ -46,6 +46,25 @@
   font-weight: 600;
 }
 
+@media (max-width: 22rem) {
+  .bottom-nav {
+    height: 68px;
+  }
+
+  .nav-label {
+    font-size: 0.58rem;
+  }
+
+  .nav-icon {
+    font-size: 1.2rem;
+  }
+
+  .fab-button {
+    width: 52px;
+    height: 52px;
+  }
+}
+
 /* --- ESTILOS PARA LOS ÍCONOS PNG (NUEVO) --- */
 .nav-png-icon {
   width: 24px;
