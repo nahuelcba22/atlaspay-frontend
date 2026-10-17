@@ -65,6 +65,11 @@
   color: var(--color-text);
 }
 
+.operations__tab:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .operations__tab[aria-current='page'] {
   color: #fff;
   background-color: var(--color-primary);
@@ -73,4 +78,20 @@
 .operations__status {
   margin: 0;
   color: var(--color-text-muted);
+}
+
+@media (max-width: 40rem) {
+  .operations__tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .operations__tab {
+    justify-content: center;
+    min-width: 0;
+    padding-right: var(--space-1);
+    padding-left: var(--space-1);
+    text-align: center;
+  }
 }
