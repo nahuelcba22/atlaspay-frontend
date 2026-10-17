@@ -26,7 +26,6 @@
   margin: 0;
   font-size: var(--text-2xl);
   line-height: 1.15;
-  letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
@@ -52,18 +51,41 @@
   color: var(--color-error);
 }
 
-/* En pantallas anchas, saldos y acciones conviven en dos columnas. */
+/* En escritorio, el saldo acompaña a las acciones y las monedas a la actividad. */
 @media (min-width: 64rem) {
   .dashboard__content {
     display: grid;
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    grid-template-areas:
+      'welcome welcome'
+      'balance actions'
+      'currencies activity';
     align-items: start;
     column-gap: var(--space-6);
   }
 
-  .dashboard__welcome,
+  .dashboard__welcome {
+    grid-area: welcome;
+  }
+
   .dashboard__status,
   .dashboard__error {
-    grid-column: 1 / -1;
+    grid-area: balance;
+  }
+
+  .balance-card {
+    grid-area: balance;
+  }
+
+  .currency-list {
+    grid-area: currencies;
+  }
+
+  .quick-actions {
+    grid-area: actions;
+  }
+
+  .recent-activity {
+    grid-area: activity;
   }
 }
