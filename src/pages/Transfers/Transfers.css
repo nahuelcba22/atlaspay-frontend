@@ -25,3 +25,9 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
+
+@media (min-width: 40.01rem) {
+  .transfers > .transfer-form {
+    align-self: center;
+  }
+}
