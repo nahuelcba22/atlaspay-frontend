@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Plus } from 'lucide-react';
 import BalanceCard from '../../components/dashboard/BalanceCard/BalanceCard';
 import CurrencyList from '../../components/dashboard/CurrencyList/CurrencyList';
 import QuickActions from '../../components/dashboard/QuickActions/QuickActions';
@@ -11,7 +12,7 @@ import {
   getTransferHistory,
   type Transfer,
 } from '../../services/transferService';
-import './Dashboard.css';
+// import './Dashboard.css'; // <-- Puedes eliminar o comentar este archivo
 
 function Dashboard() {
   const [balances, setBalances] = useState<AccountBalances>({
@@ -51,36 +52,46 @@ function Dashboard() {
   }, []);
 
   return (
-    <main className="dashboard">
-      <div className="dashboard__content">
-        <section className="dashboard__welcome">
-          <h1 className="dashboard__title">Tu billetera</h1>
-          <p className="dashboard__subtitle">
-            Gestiona tus monedas desde un solo lugar.
-          </p>
-        </section>
+    <div className="min-h-screen bg-[#07101f] text-[#f4f7fb]">
+      {/* Contenedor principal con el fondo oscuro y texto claro */}
+      <div className="mx-auto max-w-[1240px] px-5 py-8 sm:px-8 lg:px-12 lg:py-11">
+        
+        {/* Cabecera del Dashboard */}
+        <div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="mb-2 text-sm text-slate-400">Buen día <span className="text-[#26cee8]">✦</span></p>
+            <h1 className="text-3xl font-semibold tracking-[-0.06em] sm:text-[40px]">
+              Tu dinero, <span className="font-serif font-normal italic text-[#2bd5eb]">en movimiento.</span>
+            </h1>
+          </div>
+          <button className="flex w-fit items-center gap-2 rounded-xl bg-[#2d82f5] px-4 py-3 text-sm font-semibold shadow-[0_10px_30px_rgba(45,130,245,0.22)] transition hover:bg-[#4090fa]">
+            <Plus size={17} /> Agregar dinero
+          </button>
+        </div>
 
-        {isLoading && (
-          <p className="dashboard__status">Cargando tu billetera...</p>
-        )}
+        {/* Estados de carga y error (Estilizados mínimamente para que se vean) */}
+        {isLoading && <p className="mb-5 text-sm text-[#38d8ec]">Cargando tu billetera...</p>}
+        {hasError && <p className="mb-5 text-sm text-red-400">No pudimos cargar los datos de tu billetera.</p>}
 
-        {hasError && (
-          <p className="dashboard__error">
-            No pudimos cargar los datos de tu billetera.
-          </p>
-        )}
-
+        {/* Grilla principal: Balance y Operaciones Rápidas */}
         {!isLoading && !hasError && (
-          <BalanceCard balance={balances.ARS} />
+          <div className="grid gap-5 xl:grid-cols-[1.5fr_1fr]">
+            <BalanceCard balance={balances.ARS} />
+            <QuickActions />
+          </div>
         )}
 
-        <CurrencyList balances={balances} />
+        {/* Aquí irán los siguientes componentes que estilizaremos */}
+        <div className="mt-10">
+          <CurrencyList balances={balances} />
+        </div>
 
-        <QuickActions />
+        <div className="mt-10">
+          <RecentActivity transfers={transfers} />
+        </div>
 
-        <RecentActivity transfers={transfers} />
       </div>
-    </main>
+    </div>
   );
 }
 

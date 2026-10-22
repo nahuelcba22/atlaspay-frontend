@@ -1,0 +1,133 @@
+
+C:\Proyectos\Desarrollo\atlaspay-frontend
+├── api
+|  ├── email
+|  |  ├── transactionEmail.content.ts
+|  |  ├── transactionEmail.format.ts
+|  |  ├── transactionEmail.template.ts
+|  |  └── transactionEmail.types.ts
+|  └── send-transaction-email.ts
+├── eslint.config.js
+├── estructura.txt
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+|  ├── favicon.svg
+|  └── icons.svg
+├── README.md
+├── src
+|  ├── App.tsx
+|  ├── assets
+|  |  ├── atlaspay-icon.svg
+|  |  ├── icono-admin.png
+|  |  ├── icono-comprar.png
+|  |  ├── icono-historial.png
+|  |  ├── icono-operar.png
+|  |  ├── icono-perfil.png
+|  |  └── y.png
+|  ├── components
+|  |  ├── admin
+|  |  |  ├── AdminSummary.tsx
+|  |  |  ├── ExchangeOperations.tsx
+|  |  |  └── GlobalTransferHistory.tsx
+|  |  ├── auth
+|  |  |  ├── AuthBrand
+|  |  |  ├── Forms
+|  |  |  ├── GoogleAuthButton
+|  |  |  └── ProtectedRoute
+|  |  ├── chat
+|  |  |  └── ChatAssistant
+|  |  ├── dashboard
+|  |  |  ├── BalanceCard
+|  |  |  ├── CurrencyCard
+|  |  |  ├── CurrencyList
+|  |  |  ├── DashboardHeader
+|  |  |  ├── QuickActions
+|  |  |  └── RecentActivity
+|  |  ├── history
+|  |  |  ├── history.format.ts
+|  |  |  ├── HistoryCard
+|  |  |  ├── HistoryFilters
+|  |  |  ├── HistoryItem
+|  |  |  ├── HistoryPagination
+|  |  |  └── useHistory.ts
+|  |  ├── landing
+|  |  |  ├── Hero
+|  |  |  ├── HeroScene
+|  |  |  ├── HowItWorks
+|  |  |  ├── LandingFooter
+|  |  |  ├── LandingHeader
+|  |  |  ├── RatesTicker
+|  |  |  ├── referenceRates.ts
+|  |  |  ├── Reveal
+|  |  |  └── Stories
+|  |  ├── layout
+|  |  |  ├── BackLink
+|  |  |  ├── BottomNav
+|  |  |  └── PrivateNavbar
+|  |  └── operations
+|  |     ├── ExchangeForm
+|  |     └── TransferForm
+|  ├── config
+|  |  └── api.ts
+|  ├── index.css
+|  ├── main.tsx
+|  ├── pages
+|  |  ├── Admin
+|  |  |  ├── Admin.css
+|  |  |  └── Admin.tsx
+|  |  ├── Dashboard
+|  |  |  ├── Dashboard.css
+|  |  |  └── Dashboard.tsx
+|  |  ├── History
+|  |  |  └── History.tsx
+|  |  ├── Landing
+|  |  |  ├── Landing.css
+|  |  |  └── Landing.tsx
+|  |  ├── Login
+|  |  |  ├── Login.css
+|  |  |  └── Login.tsx
+|  |  ├── Operations
+|  |  |  ├── Operations.css
+|  |  |  └── Operations.tsx
+|  |  ├── Profile
+|  |  |  ├── Profile.css
+|  |  |  └── Profile.tsx
+|  |  ├── Register
+|  |  |  ├── Register.css
+|  |  |  └── Register.tsx
+|  |  └── Transfers
+|  |     ├── Transfers.css
+|  |     └── Transfers.tsx
+|  ├── services
+|  |  ├── accountService.ts
+|  |  ├── adminService.ts
+|  |  ├── apiResponse.ts
+|  |  ├── authService.ts
+|  |  ├── authStorage.ts
+|  |  ├── chatService.ts
+|  |  ├── exchangeService.ts
+|  |  ├── historyService.ts
+|  |  ├── profileService.ts
+|  |  └── transferService.ts
+|  ├── styles
+|  |  ├── tokens.css
+|  |  └── variables.css
+|  └── utils
+|     ├── authValidation.ts
+|     ├── currency.ts
+|     ├── exchange.test.ts
+|     └── exchange.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vercel.json
+└── vite.config.ts
+
+directory: 881 file: 3862
+
+ignored: directory (8)
+
+
+[2K[1G
