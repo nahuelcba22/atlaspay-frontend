@@ -1,22 +1,79 @@
+import { useState } from 'react';
+import { Eye, EyeOff, Sparkles, Copy } from 'lucide-react';
 import { formatCurrency } from '../../../utils/currency';
-import './BalanceCard.css';
+// import './BalanceCard.css'; // <-- Ya puedes eliminar o comentar este archivo
 
 interface BalanceCardProps {
   balance: number;
+  alias?: string; // Opcional: preparado para recibir el alias desde tu backend después
 }
 
-function BalanceCard({ balance }: BalanceCardProps) {
+export default function BalanceCard({ balance, alias = 'atlaspay.mateo' }: BalanceCardProps) {
+  const [balanceVisible, setBalanceVisible] = useState(true);
+  const [copied, setCopied] = useState(false);
+
+  const copyAlias = async () => {
+    try {
+      await navigator.clipboard.writeText(alias);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      console.error('Error al copiar el alias');
+    }
+  };
+
   return (
-    <section className="balance-card">
-      <p className="balance-card__label">Balance total</p>
+    <div className="relative overflow-hidden rounded-[24px] border border-[#21516b] bg-gradient-to-br from-[#123b54] via-[#0d273d] to-[#0a1829] p-6 sm:p-8">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute -right-24 -top-28 size-80 rounded-full border border-[#38d8ec]/20" />
+      <div className="absolute -right-8 -top-12 size-56 rounded-full border border-[#38d8ec]/10" />
+      
+      <div className="relative flex items-start justify-between">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#9ab7c4]">
+            Balance total
+          </p>
+          
+          <div className="mt-4 flex items-center gap-3">
+            <h2 className="text-4xl font-semibold tracking-[-0.06em] text-white sm:text-[47px]">
+              {/* Aquí inyectamos tu lógica real */}
+              {balanceVisible ? formatCurrency(balance, 'ARS') : 'ARS $ •••••••'}
+            </h2>
+            <button 
+              className="text-[#75a8b8] transition-colors hover:text-white" 
+              onClick={() => setBalanceVisible(!balanceVisible)} 
+              aria-label={balanceVisible ? 'Ocultar balance' : 'Mostrar balance'}
+            >
+              {balanceVisible ? <Eye size={18} /> : <EyeOff size={18} />}
+            </button>
+          </div>
+          
+          <p className="mt-3 flex items-center gap-2 text-xs text-[#71d9d4]">
+            <span className="rounded-full bg-[#6ee7d8]/10 px-2 py-1">+ 8,42%</span>
+            <span className="text-[#8daab5]">vs. mes anterior</span>
+          </p>
+        </div>
+        
+        <div className="hidden size-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-[#46d9eb] sm:grid">
+          <Sparkles size={24} strokeWidth={1.4} />
+        </div>
+      </div>
 
-      <h2 className="balance-card__amount">
-        {formatCurrency(balance, 'ARS')}
-      </h2>
-
-      <span className="balance-card__reference">Saldo disponible en ARS</span>
-    </section>
+      <div className="relative mt-10 flex items-end justify-between border-t border-white/10 pt-4">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.18em] text-[#809ba7]">Alias de cuenta</p>
+          <button 
+            onClick={copyAlias} 
+            className="mt-1 flex items-center gap-2 text-sm text-white transition-colors hover:text-[#38d8ea]"
+          >
+            {alias} <Copy size={13} />
+            {copied && <span className="text-[10px] text-[#66e2d6]">Copiado</span>}
+          </button>
+        </div>
+        <p className="hidden text-right text-xs text-[#809ba7] sm:block">
+          Saldo disponible en ARS
+        </p>
+      </div>
+    </div>
   );
 }
-
-export default BalanceCard;
