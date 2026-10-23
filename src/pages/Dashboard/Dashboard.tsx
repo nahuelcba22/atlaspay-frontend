@@ -12,7 +12,7 @@ import {
   getTransferHistory,
   type Transfer,
 } from '../../services/transferService';
-// import './Dashboard.css'; // <-- Puedes eliminar o comentar este archivo
+import { getProfile } from '../../services/profileService';
 
 function Dashboard() {
   const [balances, setBalances] = useState<AccountBalances>({
@@ -24,12 +24,15 @@ function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [transfers, setTransfers] = useState<Transfer[]>([]);
+  const [userName, setUserName] = useState('');
+  const [accountAlias, setAccountAlias] = useState('');
 
   useEffect(() => {
     async function loadAccount() {
       try {
         const response = await getMyAccount();
         setBalances(response.cuenta.saldos);
+        setAccountAlias(response.cuenta.alias);
       } catch (error) {
         console.error('No se pudo cargar la cuenta:', error);
         setHasError(true);
@@ -46,10 +49,22 @@ function Dashboard() {
         console.error('No se pudo cargar el historial:', error);
       }
     }
+
+    async function loadProfile() {
+      try {
+        const response = await getProfile();
+        setUserName(response.usuario.nombre);
+      } catch (error) {
+        console.error('No se pudo cargar el perfil:', error);
+      }
+    }
     
     loadAccount();
     loadTransfers();
+    loadProfile();
   }, []);
+
+  const firstName = userName.trim().split(' ')[0];
 
   return (
     <div className="min-h-screen bg-[#07101f] text-[#f4f7fb]">
@@ -59,7 +74,10 @@ function Dashboard() {
         {/* Cabecera del Dashboard */}
         <div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <p className="mb-2 text-sm text-slate-400">Buen día <span className="text-[#26cee8]">✦</span></p>
+            <p className="mb-2 text-sm text-slate-400">
+              Buen día{firstName ? `, ${firstName}` : ''}{' '}
+              <span className="text-[#26cee8]">✦</span>
+            </p>
             <h1 className="text-3xl font-semibold tracking-[-0.06em] sm:text-[40px]">
               Tu dinero, <span className="font-serif font-normal italic text-[#2bd5eb]">en movimiento.</span>
             </h1>
@@ -76,7 +94,7 @@ function Dashboard() {
         {/* Grilla principal: Balance y Operaciones Rápidas */}
         {!isLoading && !hasError && (
           <div className="grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-            <BalanceCard balance={balances.ARS} />
+            <BalanceCard balance={balances.ARS} alias={accountAlias} />
             <QuickActions />
           </div>
         )}

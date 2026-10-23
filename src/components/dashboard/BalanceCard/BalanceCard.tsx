@@ -5,10 +5,10 @@ import { formatCurrency } from '../../../utils/currency';
 
 interface BalanceCardProps {
   balance: number;
-  alias?: string; // Opcional: preparado para recibir el alias desde tu backend después
+  alias: string;
 }
 
-export default function BalanceCard({ balance, alias = 'atlaspay.mateo' }: BalanceCardProps) {
+export default function BalanceCard({ balance, alias }: BalanceCardProps) {
   const [balanceVisible, setBalanceVisible] = useState(true);
   const [copied, setCopied] = useState(false);
 
