@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Plus } from 'lucide-react';
 import BalanceCard from '../../components/dashboard/BalanceCard/BalanceCard';
 import CurrencyList from '../../components/dashboard/CurrencyList/CurrencyList';
 import QuickActions from '../../components/dashboard/QuickActions/QuickActions';
@@ -76,15 +75,11 @@ function Dashboard() {
           <div>
             <p className="mb-2 text-sm text-slate-400">
               Buen día{firstName ? `, ${firstName}` : ''}{' '}
-              <span className="text-[#26cee8]">✦</span>
             </p>
             <h1 className="text-3xl font-semibold tracking-[-0.06em] sm:text-[40px]">
               Tu dinero, <span className="font-serif font-normal italic text-[#2bd5eb]">en movimiento.</span>
             </h1>
           </div>
-          <button className="flex w-fit items-center gap-2 rounded-xl bg-[#2d82f5] px-4 py-3 text-sm font-semibold shadow-[0_10px_30px_rgba(45,130,245,0.22)] transition hover:bg-[#4090fa]">
-            <Plus size={17} /> Agregar dinero
-          </button>
         </div>
 
         {/* Estados de carga y error (Estilizados mínimamente para que se vean) */}
