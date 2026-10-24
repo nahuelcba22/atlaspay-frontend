@@ -47,15 +47,6 @@ export default function BalanceCard({ balance, alias }: BalanceCardProps) {
               {balanceVisible ? <Eye size={18} /> : <EyeOff size={18} />}
             </button>
           </div>
-          
-          <p className="mt-3 flex items-center gap-2 text-xs text-[#71d9d4]">
-            <span className="rounded-full bg-[#6ee7d8]/10 px-2 py-1">+ 8,42%</span>
-            <span className="text-[#8daab5]">vs. mes anterior</span>
-          </p>
-        </div>
-        
-        <div className="hidden size-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-[#46d9eb] sm:grid">
-          <Sparkles size={24} strokeWidth={1.4} />
         </div>
       </div>
 
