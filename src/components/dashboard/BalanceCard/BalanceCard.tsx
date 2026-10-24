@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Eye, EyeOff, Sparkles, Copy } from 'lucide-react';
+import { Eye, EyeOff, Copy } from 'lucide-react';
 import { formatCurrency } from '../../../utils/currency';
-// import './BalanceCard.css'; // <-- Ya puedes eliminar o comentar este archivo
 
 interface BalanceCardProps {
   balance: number;
@@ -36,7 +35,6 @@ export default function BalanceCard({ balance, alias }: BalanceCardProps) {
           
           <div className="mt-4 flex items-center gap-3">
             <h2 className="text-4xl font-semibold tracking-[-0.06em] text-white sm:text-[47px]">
-              {/* Aquí inyectamos tu lógica real */}
               {balanceVisible ? formatCurrency(balance, 'ARS') : 'ARS $ •••••••'}
             </h2>
             <button 
