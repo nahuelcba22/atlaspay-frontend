@@ -12,6 +12,7 @@ import {
   type Transfer,
 } from '../../services/transferService';
 import { getProfile } from '../../services/profileService';
+// Ya no necesitamos importar './Dashboard.css'
 
 function Dashboard() {
   const [balances, setBalances] = useState<AccountBalances>({
@@ -63,45 +64,61 @@ function Dashboard() {
     loadProfile();
   }, []);
 
+  // Lógica para el nombre
   const firstName = userName.trim().split(' ')[0];
 
+  // Lógica para el saludo dinámico según la hora
+  const currentHour = new Date().getHours();
+  let greeting = 'Buenas noches';
+  if (currentHour >= 6 && currentHour < 12) greeting = 'Buen día';
+  else if (currentHour >= 12 && currentHour < 20) greeting = 'Buenas tardes';
+
   return (
-    <div className="min-h-screen bg-[#07101f] text-[#f4f7fb]">
-      {/* Contenedor principal con el fondo oscuro y texto claro */}
-      <div className="mx-auto max-w-[1240px] px-5 py-8 sm:px-8 lg:px-12 lg:py-11">
+    <div className="min-h-screen w-full bg-[#07101f] pb-8 text-[#f4f7fb]">
+      {/* Contenedor principal centrado */}
+      <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-6 px-5 pt-6 sm:px-8 lg:px-12 lg:pt-8">
         
         {/* Cabecera del Dashboard */}
-        <div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <p className="mb-2 text-sm text-slate-400">
-              Buen día{firstName ? `, ${firstName}` : ''}{' '}
-            </p>
-            <h1 className="text-3xl font-semibold tracking-[-0.06em] sm:text-[40px]">
-              Tu dinero, <span className="font-serif font-normal italic text-[#2bd5eb]">en movimiento.</span>
-            </h1>
-          </div>
+        <div className="mb-4 flex flex-col gap-2">
+          <p className="text-sm text-slate-400">
+            {greeting}{firstName ? `, ${firstName}` : ''} <span className="text-[#26cee8]">✦</span>
+          </p>
+          <h1 className="text-3xl font-semibold leading-[1.15] tracking-[-0.06em] sm:text-[40px]">
+            Tu dinero, <span className="font-serif font-normal italic text-[#2bd5eb]">en movimiento.</span>
+          </h1>
         </div>
 
-        {/* Estados de carga y error (Estilizados mínimamente para que se vean) */}
-        {isLoading && <p className="mb-5 text-sm text-[#38d8ec]">Cargando tu billetera...</p>}
-        {hasError && <p className="mb-5 text-sm text-red-400">No pudimos cargar los datos de tu billetera.</p>}
-
-        {/* Grilla principal: Balance y Operaciones Rápidas */}
-        {!isLoading && !hasError && (
-          <div className="grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-            <BalanceCard balance={balances.ARS} alias={accountAlias} />
-            <QuickActions />
+        {/* Estados de carga y error */}
+        {isLoading && (
+          <div className="rounded-md border border-white/10 bg-[#0a1829] p-4 text-sm text-[#38d8ec]">
+            Cargando tu billetera...
+          </div>
+        )}
+        
+        {hasError && (
+          <div className="rounded-md border border-red-500/20 bg-[#0a1829] p-4 text-sm text-red-400">
+            No pudimos cargar los datos de tu billetera.
           </div>
         )}
 
-        {/* Aquí irán los siguientes componentes que estilizaremos */}
-        <div className="mt-10">
-          <CurrencyList balances={balances} />
-        </div>
+        {/* Grilla principal: Replicando exactamente el comportamiento de tu CSS antiguo */}
+        {!isLoading && !hasError && (
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.6fr_1fr]">
+            
+            {/* Columna Izquierda: Balance y Monedas */}
+            <div className="flex flex-col gap-6">
+              <BalanceCard balance={balances.ARS} alias={accountAlias} />
+              <CurrencyList balances={balances} />
+            </div>
 
-        <div className="mt-10">
-          <RecentActivity transfers={transfers} />
-        </div>
+            {/* Columna Derecha: Operaciones y Actividad */}
+            <div className="flex flex-col gap-6">
+              <QuickActions />
+              <RecentActivity transfers={transfers} />
+            </div>
+
+          </div>
+        )}
 
       </div>
     </div>
