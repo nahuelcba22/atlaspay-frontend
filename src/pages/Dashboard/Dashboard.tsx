@@ -90,13 +90,13 @@ function Dashboard() {
 
         {/* Estados de carga y error */}
         {isLoading && (
-          <div className="rounded-md border border-white/10 bg-[#0a1829] p-4 text-sm text-[#38d8ec]">
+          <div role="status" aria-live="polite" className="rounded-md border border-white/10 bg-[#0a1829] p-4 text-sm text-[#38d8ec]">
             Cargando tu billetera...
           </div>
         )}
         
         {hasError && (
-          <div className="rounded-md border border-red-500/20 bg-[#0a1829] p-4 text-sm text-red-400">
+          <div role="alert" className="rounded-md border border-red-500/20 bg-[#0a1829] p-4 text-sm text-red-400">
             No pudimos cargar los datos de tu billetera.
           </div>
         )}
